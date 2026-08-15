@@ -3,9 +3,9 @@
 - Updated: 2026-08-15
 - Goal: Publish this prompt-engineering workspace as a handoff-ready private
 - Repository name: `AskLegal-Tools-SystemPrompt` (selected by the user).
-- Status: The local repository is prepared and validated. GitHub CLI is
-  installed, but its saved `stevw-repo` authentication is invalid and must be
-  refreshed before remote creation and push.
+- Status: The local repository is prepared, validated, and committed on `main`.
+  GitHub CLI browser reauthentication is awaiting the user's approval before
+  remote creation and push.
 
 ## Current repository handoff
 
@@ -48,6 +48,8 @@
 - Preserved `.superpowers/sdd/task-3-brief.md` because
   `testing/suites/README.md` references its Australian legal-currency review
   signals; the other transient `.superpowers/sdd/` artifacts remain ignored.
+- Created the initial local `main` commit `dc69ce6` with message
+  `Initial handoff-ready prompt workspace`.
 
 ## Validation completed
 
@@ -68,9 +70,8 @@
 
 ## Exact next steps
 
-1. Commit the handoff-ready snapshot on `main`.
-2. Reauthenticate GitHub CLI in the user's browser.
-3. Create and push the private GitHub repository using the user's exact name,
+1. Complete the pending GitHub CLI device authorization in the user's browser.
+2. Create and push the private GitHub repository using the user's exact name,
    `AskLegal-Tools-SystemPrompt`.
-4. Replace the README clone placeholder with the verified remote URL, update
+3. Replace the README clone placeholder with the verified remote URL, update
    this file to the completed state, commit, push, and verify from GitHub.
