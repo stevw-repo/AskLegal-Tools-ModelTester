@@ -70,6 +70,11 @@
 - New handoff and continuity files pass Git whitespace validation. Existing
   prompts and generated Markdown results retain their intentional historical
   line endings and Markdown hard breaks.
+- Verified through GitHub that the repository is private and its default branch
+  is `main`; the remote branch matched the local commit before the final
+  documentation-only checkpoint.
+- Made a fresh shallow clone from the private HTTPS URL, confirmed the clone did
+  not contain `api.txt`, and reran all 11 unit tests successfully in that clone.
 
 ## Exact next steps
 
