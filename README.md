@@ -32,7 +32,7 @@ Requirements: Git and Python 3.10 or newer. The test runner uses only Python's
 standard library.
 
 ```bash
-git clone <private-repository-url>
+git clone https://github.com/stevw-repo/AskLegal-Tools-SystemPrompt.git
 cd AskLegal-Tools-SystemPrompt
 python3 -m unittest testing/scripts/test_run_asklegal_tests.py
 ```

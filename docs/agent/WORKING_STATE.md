@@ -2,10 +2,10 @@
 
 - Updated: 2026-08-15
 - Goal: Publish this prompt-engineering workspace as a handoff-ready private
+  GitHub repository for use on another device.
 - Repository name: `AskLegal-Tools-SystemPrompt` (selected by the user).
-- Status: The local repository is prepared, validated, and committed on `main`.
-  GitHub CLI browser reauthentication is awaiting the user's approval before
-  remote creation and push.
+- Status: Complete. The private GitHub repository exists under `stevw-repo`, and
+  the local `main` branch is pushed to and tracks `origin/main`.
 
 ## Current repository handoff
 
@@ -15,8 +15,9 @@
 - `docs/agent/CONTEXT.md` records verified project and runner facts.
 - `docs/agent/DECISIONS.md` records durable decisions, including private GitHub
   visibility and exclusions.
-- `docs/agent/WORKING_STATE.md` records the current goal, validation, blocker,
+- `docs/agent/WORKING_STATE.md` records the current goal, validation, status,
   and exact next steps.
+- Remote: `https://github.com/stevw-repo/AskLegal-Tools-SystemPrompt`.
 - The root `api.txt` credential file must remain local and untracked.
 
 ## Latest substantive project state
@@ -40,8 +41,8 @@
 
 - Reviewed project instructions and the existing continuity files.
 - Confirmed the folder did not previously contain a Git repository.
-- Confirmed GitHub CLI 2.96.0 is installed and the configured account name is
-  `stevw-repo`; its stored token is invalid as of this update.
+- Confirmed GitHub CLI 2.96.0 is installed and reauthenticated as `stevw-repo`
+  using GitHub's browser device flow.
 - Added a root onboarding guide and expanded ignore rules for credentials,
   environment files, keys and certificates, captures, caches, and macOS
   metadata.
@@ -50,6 +51,8 @@
   signals; the other transient `.superpowers/sdd/` artifacts remain ignored.
 - Created the initial local `main` commit `dc69ce6` with message
   `Initial handoff-ready prompt workspace`.
+- Created the private GitHub repository `stevw-repo/AskLegal-Tools-SystemPrompt`,
+  configured `origin`, and pushed `main` successfully.
 
 ## Validation completed
 
@@ -70,8 +73,13 @@
 
 ## Exact next steps
 
-1. Complete the pending GitHub CLI device authorization in the user's browser.
-2. Create and push the private GitHub repository using the user's exact name,
-   `AskLegal-Tools-SystemPrompt`.
-3. Replace the README clone placeholder with the verified remote URL, update
-   this file to the completed state, commit, push, and verify from GitHub.
+1. On another device, clone
+   `https://github.com/stevw-repo/AskLegal-Tools-SystemPrompt.git` using an
+   authorised GitHub account.
+2. Configure `ASKLEGAL_API_KEY` locally or create an untracked root `api.txt`;
+   never retrieve the existing local credential from Git history because it is
+   intentionally absent.
+3. Run `python3 -m unittest testing/scripts/test_run_asklegal_tests.py` to verify
+   the new environment.
+4. Resume the substantive Hong Kong development-versus-production output review
+   described above, treating `hk-018` as an unresolved truncation failure.

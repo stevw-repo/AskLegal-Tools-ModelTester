@@ -5,6 +5,9 @@
 - This workspace is designed to be transferred as a private Git repository;
   system prompts, generated test outputs, and retained diagnostics should not be
   made public without a separate content and confidentiality review.
+- The private GitHub remote is
+  `https://github.com/stevw-repo/AskLegal-Tools-SystemPrompt`; the local `main`
+  branch tracks `origin/main`.
 - `README.md` is the human onboarding entry point. `AGENTS.md` defines project
   scope and conventions, while this directory contains the durable agent handoff.
 - The test runner uses Python 3.10 or newer and only the Python standard library.
