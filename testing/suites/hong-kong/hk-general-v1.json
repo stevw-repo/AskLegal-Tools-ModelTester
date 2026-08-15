@@ -1,0 +1,74 @@
+[
+  {
+    "id": "hk-001",
+    "query": "I run a Hong Kong food-import business and agreed to buy 50,000 custom containers in monthly batches from a local supplier. Its sales director promised by email that the first batch would arrive before my supermarket launch, but the signed contract does not mention that date. The batch arrived three weeks late and 7,000 containers leaked. The terms require defects to be reported within seven days, cap liability at the price of the affected batch, and exclude lost profits and customer claims. I reported the leaks on day ten because they appeared only when the containers were filled. The supermarket has charged me HK$320,000 for missed deliveries, and emergency replacements cost HK$140,000. Please analyse breach, the status of the email promise, the exclusion and limitation clauses, recoverable loss, and the immediate steps needed to preserve my position while I continue trading."
+  },
+  {
+    "id": "hk-002",
+    "query": "I bought a Hong Kong logistics company after an accounting firm reported that its largest customer had renewed for three years. The seller actually held only an unsigned draft renewal, and the customer left two months after completion. The accountant says it relied on management information and points to a retainer limiting liability to twice its HK$180,000 fee. The seller says I conducted my own due diligence. I paid HK$8 million for the company and believe it was worth much less without that customer. What claims might I have against the seller and accountant, and what evidence and valuation work would I need?"
+  },
+  {
+    "id": "hk-003",
+    "query": "I own 25% of a Hong Kong private company, and the other two shareholders are its directors. They have paid HK$1.5 million in management fees to a company owned by one director's spouse, transferred a major customer to a new business they own, and stopped giving me management accounts. They have now proposed an issue of shares that would reduce my stake below 10%, saying the company urgently needs cash, although they rejected my offer to invest on the same terms. Our shareholders' agreement requires unanimous approval for related-party transactions but has no exit mechanism. Please assess directors' duties, unfair prejudice and contractual claims, possible remedies and urgent interim protection, and the records I should seek."
+  },
+  {
+    "id": "hk-004",
+    "query": "I was a regional sales manager employed in Hong Kong by a medical-device company. It dismissed me immediately after discovering that I had emailed a customer spreadsheet to my personal account so I could work at home; I did not send it to anyone else. It is withholding HK$280,000 in commission and threatens an injunction because I accepted a competitor's offer. My contract contains a twelve-month Asia-wide non-compete clause and confidentiality obligations with no time limit. Please assess the dismissal, unpaid commission, confidentiality exposure, and whether the restraint is likely to be enforceable in Hong Kong."
+  },
+  {
+    "id": "hk-005",
+    "query": "I paid a freelance developer in Hong Kong to create my company's booking platform and logo. Our emails describe the deliverables and price but do not expressly assign intellectual property. The developer has now licensed similar code and the same logo concept to a competitor, while claiming that I bought only a right to use the work. Who is likely to own the copyright, and what practical steps could I take before the competitor launches next week?"
+  },
+  {
+    "id": "hk-006",
+    "query": "I operate a Hong Kong online retailer. A ransomware attacker sent us a sample containing names, Hong Kong identity card numbers, addresses, telephone numbers, order histories, and password hashes for about 22,000 customers. Our cloud vendor says an administrator account was accessed with a password reused by one of my employees; the employee says the vendor failed to enforce multi-factor authentication despite promising it in its proposal. We restored the site from backups, but the attacker threatens to publish the data within 48 hours. We do not yet know whether every record was copied. Give me a prioritised action plan covering containment, investigation, evidence, notification and communication obligations, the Privacy Commissioner, the cloud vendor, and potential liability."
+  },
+  {
+    "id": "hk-007",
+    "query": "I manage sales for a Hong Kong electronics distributor. Two competing distributors suggested that we stop discounting below an agreed price and divide major customers between us. Our shared supplier supports the idea and has offered extra rebates if everyone follows it. Nothing has been signed, but my managing director told me to reply that we are interested and to attend a meeting next week. What competition-law risk would this create for me and the company, and what should I do with the emails and invitation?"
+  },
+  {
+    "id": "hk-008",
+    "query": "I lease street-level premises in Hong Kong for a restaurant. Repeated leaks from the flat above have forced me to close twice, but my landlord says the lease makes all repairs my responsibility. I withheld one month's rent after the landlord ignored my notices, and it has now threatened forfeiture. The lease also excludes liability for interruption to my business. What are my options and immediate risks?"
+  },
+  {
+    "id": "hk-009",
+    "query": "I am a Hong Kong electrical subcontractor owed HK$2.4 million on a private commercial development. I served a payment claim 30 days ago, but the main contractor did not give a payment response and now says it will deduct HK$1.6 million for delay and defective cabling. Most alleged defects were raised only after my claim. The contract requires arbitration, and both retention money and my final progress payment remain unpaid. Please explain whether any statutory security-of-payment or adjudication route applies, including which contract dates and value thresholds matter, the significance of the missing response, the deadlines and documents I must verify urgently, and how adjudication would interact with later arbitration."
+  },
+  {
+    "id": "hk-010",
+    "query": "My Hong Kong company is owed HK$1.3 million for equipment supplied six months ago. The customer admits the invoices but says it cannot pay, has transferred several machines to a company owned by its director's brother, and has offered 30 cents on the dollar if I agree this week. Other creditors are also demanding payment. Should I accept, sue for the debt, pursue a winding-up route, or try to challenge the asset transfers?"
+  },
+  {
+    "id": "hk-011",
+    "query": "My Hong Kong company bought HK$12 million of components from a Shenzhen manufacturer for resale in Southeast Asia. The contract chooses Hong Kong law and provides for arbitration seated in Hong Kong, but it does not name an arbitral institution or specify the number of arbitrators. Tests after delivery indicate that many components were refurbished rather than new. The manufacturer denies this, has stopped answering technical questions, and appears to hold its assets only in Mainland China. Our customers are threatening to terminate their orders. Please analyse how I can commence the arbitration, seek urgent evidence or interim relief in Hong Kong, address the incomplete arbitration clause, and plan for possible recognition or enforcement in Mainland China."
+  },
+  {
+    "id": "hk-012",
+    "query": "I am an independent non-executive director of a Hong Kong Main Board issuer. The company proposes to buy a distribution business from an associate of its controlling shareholder, with part of the consideration paid in new shares, and management estimates that one applicable percentage ratio is about 22%. The CFO says an older HKEX listing decision and an FAQ mean that board approval is enough, and points to a GEM-listed company that handled a similar deal without an independent shareholder vote. We are being asked to sign in three days. Please assess the likely transaction classification and connected-transaction issues, announcement and approval requirements, abstentions and independent advice, and whether the listing decision, FAQ, or GEM example can displace the current Main Board Listing Rules."
+  },
+  {
+    "id": "hk-013",
+    "query": "I bought a new laptop from a Hong Kong shop four months ago, and it has failed three times despite two repairs. The shop says its warranty allows only another repair and refuses a replacement or refund. What rights do I have?"
+  },
+  {
+    "id": "hk-014",
+    "query": "I rented a Hong Kong flat for two years but moved out after ten months because persistent mould made my child's asthma worse. I repeatedly sent the landlord photographs and medical notes. The landlord says I broke the tenancy, is keeping my HK$48,000 deposit, and wants another two months' rent until a new tenant moves in. Am I liable, and how can I recover the deposit?"
+  },
+  {
+    "id": "hk-015",
+    "query": "I suffered a fractured wrist and lasting nerve pain after slipping on an unmarked wet floor in a Hong Kong shopping centre. I am 42, earn HK$55,000 a month, missed four months of work, and may need further surgery. The shopping centre says its cleaner inspected the area ten minutes earlier. Please calculate exactly how much compensation I should receive and explain whether I can claim against the owner, manager, or cleaning contractor."
+  },
+  {
+    "id": "hk-016",
+    "query": "我在香港結婚十二年，現正考慮離婚。我們有兩名分別七歲和十歲的子女、一個聯名持有的自住物業、強積金及一間婚後開設的小公司。配偶的收入遠高於我，並表示因為我的工作時間不固定，子女應與他同住。我亦可能想帶子女移居加拿大，與父母同住。請分析離婚、子女管養及移居、贍養費和財產分配的主要問題，並說明我在分居前應保留哪些資料及避免做甚麼。"
+  },
+  {
+    "id": "hk-017",
+    "query": "My father died domiciled in Hong Kong without a will. He left a wife, three adult children, a Hong Kong flat held in his sole name, Mandatory Provident Fund benefits, and several bank accounts. Who is likely to inherit, which assets may fall outside the estate, and what must I do before dealing with the flat or money?"
+  },
+  {
+    "id": "hk-018",
+    "query": "我在香港一間酒吧外與人爭執，對方舉起玻璃樽並向我走近，我便推了他一下。他跌倒後下顎骨折。警方要求我明天到警署協助調查，但沒有說我是證人還是疑犯。我可能面對甚麼刑事責任？在錄取口供或交出手機前，我應注意甚麼？"
+  }
+]
