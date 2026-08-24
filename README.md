@@ -1,69 +1,123 @@
-# Ask.Legal System Prompts
+# Ask.Legal Legal Analysis Model Tester
 
-This private workspace contains Ask.Legal system prompts, reusable query suites,
-generated prompt-test results, and the local Python test runner. It is limited to
-prompt engineering and prompt-output testing; it does not define or modify the
-application, retrieval, database, deployment, or production layers.
+This private repository compares Ask.Legal legal-analysis responses across
+manually deployed prompts, retrieval indexes, models, and retrieval settings.
+It covers legal Q&A only.
 
-## Start here
-
-Before changing prompts or running tests, read:
-
-1. `AGENTS.md` for project scope and conventions.
-2. `docs/agent/CONTEXT.md` for verified operational facts.
-3. `docs/agent/DECISIONS.md` for durable decisions and their rationale.
-4. `docs/agent/WORKING_STATE.md` for the current status and exact next steps.
-
-These files are the authoritative handoff package. Update them whenever work
-changes a durable fact, decision, blocker, or next step.
+The tester does not deploy or modify the Ask.Legal backend, Azure resources, or
+Pinecone indexes. Before each run, deploy the configuration manually and record
+the configuration in the experiment file.
 
 ## Repository layout
 
-- `prompts/<jurisdiction>/` — versioned jurisdiction-specific prompts and notes.
-- `testing/suites/<jurisdiction>/` — reusable JSON query suites.
-- `testing/results/<jurisdiction>/` — generated Markdown API outputs.
-- `testing/scripts/` — the standalone Ask.Legal test runner and unit tests.
-- `testing/temp/` — retained review and diagnostic working material.
-- `docs/agent/` — durable context, decisions, and current working state.
+- `prompts/<jurisdiction>/` — new, versioned legal-analysis prompts.
+- `suites/<jurisdiction>/<suite-version>/` — questions and optional expectations.
+- `rubrics/` — instructions used by an agent to evaluate saved responses.
+- `experiments/<jurisdiction>/<experiment-name>/` — experiment definition, one
+  saved run per arm, structured evaluation, and final report.
+- `tools/` — the Ask.Legal API runner.
+- `tests/` — local unit tests for the runner.
+- `legacy/` — the complete pre-reorganization workspace, retained unchanged for
+  historical reference.
+- `.agent/` — current context, decisions, and working state.
 
-## Set up another device
+## Core terms
 
-Requirements: Git and Python 3.10 or newer. The test runner uses only Python's
-standard library.
+- **Experiment:** one comparison using one jurisdiction and one suite.
+- **Arm:** one manually deployed configuration in that comparison.
+- **Run:** one execution of one arm against the complete suite.
+- **Evaluation:** independent scoring plus side-by-side comparison of the arms.
+- **Report:** the final human-readable evaluation.
+
+Most experiments have `arm-a` and `arm-b`. The format also permits additional
+arms when needed. Each arm may be run only once inside an experiment.
+
+## Requirements
+
+- Python 3.10 or newer.
+- PyYAML 6.x.
+
+The runner otherwise uses the Python standard library.
+
+## Create an experiment
+
+1. Add any new prompt under `prompts/<jurisdiction>/`. Never edit a prompt
+   version after it has been used in a completed run.
+2. Add a versioned suite directory containing `questions.json` and, when useful,
+   `expectations.json`.
+3. Create `experiments/<jurisdiction>/<experiment-name>/experiment.yaml` using
+   the format in `experiments/README.md`.
+4. Record the complete safe configuration for each arm. Do not include secrets.
+
+## Run one arm
+
+First validate the experiment without making API calls:
 
 ```bash
-git clone https://github.com/stevw-repo/AskLegal-Tools-SystemPrompt.git
-cd AskLegal-Tools-SystemPrompt
-python3 -m unittest testing/scripts/test_run_asklegal_tests.py
-```
-
-Provide Ask.Legal authentication locally in one of these ways:
-
-- set the `ASKLEGAL_API_KEY` environment variable; or
-- create an untracked `api.txt` in the repository root containing the API key.
-
-Never commit an API key, token, certificate, `.env` file, or HAR capture. The
-repository ignore rules exclude the standard local credential and capture files,
-but review staged changes before every push.
-
-## Run prompt tests
-
-Read `testing/README.md` for the complete workflow and target-specific cautions.
-The final testing pipeline is:
-
-```bash
-python3 testing/scripts/run_asklegal_tests.py \
-  --prompt-version <prompt-version> \
-  --jurisdiction <api-jurisdiction> \
-  --suite testing/suites/<jurisdiction>/<suite>.json \
+python3 tools/run_experiment.py \
+  experiments/hong-kong/2026-08-24-hk-v7-v8/experiment.yaml \
+  --arm arm-a \
   --dry-run
 ```
 
-Remove `--dry-run` only after confirming the target, deployed prompt version,
-jurisdiction value, concurrency, TLS mode, and local credential source.
+After manually deploying the displayed configuration:
 
-## Current handoff
+```bash
+python3 tools/run_experiment.py \
+  experiments/hong-kong/2026-08-24-hk-v7-v8/experiment.yaml \
+  --arm arm-a \
+  --confirm-deployed
+```
 
-The latest completed work and unresolved issues are maintained in
-`docs/agent/WORKING_STATE.md`. In particular, consult it before rerunning Hong
-Kong production tests or evaluating the unresolved `hk-018` truncation.
+Repeat for `arm-b` after manually deploying its configuration. The runner
+refuses to overwrite an existing arm run.
+
+Create a persistent local `.env` from the tracked example and add the key:
+
+```bash
+cp .env.example .env
+```
+
+```dotenv
+ASKLEGAL_API_KEY=your-key-here
+```
+
+The root `.env` is ignored by Git. `ASKLEGAL_API_KEY` set directly in the
+environment takes precedence when present. Never put credentials in an
+experiment file, result, log, prompt, or chat.
+
+## Import Azure configuration
+
+Paste an Azure App Service environment-variable export into the ignored local
+file `.env.azure.local`. Dotenv (`NAME=VALUE`) and Azure JSON exports are both
+accepted. Keep the file local and do not paste its contents into chat.
+
+List variable names without displaying any values:
+
+```bash
+python3 tools/inspect_azure_env.py
+```
+
+The inspector separates likely secret names from configuration candidates. An
+agent can then inspect only selected non-secret values and use them to fill the
+arms in `experiment.yaml`. Never copy keys, tokens, passwords, connection
+strings, certificates, or other secrets into an experiment.
+
+## Evaluate the experiment
+
+After all arms have run, ask an agent to:
+
+1. Read the experiment, suite, optional expectations, rubric, and saved runs.
+2. Score each response independently.
+3. Compare corresponding responses side by side.
+4. Write `evaluation.json` and `report.md` in the experiment directory.
+
+The report ends the tester workflow. Any deployment or product decision is made
+separately by humans.
+
+## Verify locally
+
+```bash
+python3 -m unittest discover -s tests
+python3 -m py_compile tools/run_experiment.py tools/inspect_azure_env.py
+```

@@ -1,65 +1,101 @@
-# Ask.Legal Prompt Engineering Instructions
+# Ask.Legal Model Tester Instructions
 
 ## Scope
 
-This workspace is for Ask.Legal prompt engineering and prompt-output testing only.
+This repository is for testing and comparing Ask.Legal legal-analysis responses.
+Experiments may vary prompts, query-analysis models and prompts, query-rewrite
+models and prompts, embedding models, Pinecone index versions, retrieval values,
+rerankers, and answer-generation models and prompts.
 
-Do not modify, design, or assume changes to:
+Legal document generation and cross-jurisdiction comparisons are out of scope.
+Each experiment belongs to exactly one jurisdiction.
 
-- application pipelines;
-- retrieval systems;
-- databases;
-- deployment infrastructure;
-- production configuration.
+Do not modify or design the Ask.Legal application, backend pipeline, Azure
+deployment, Pinecone index, database, or production configuration in this
+repository. Those systems are manually configured outside this repository.
 
-If a task appears to require those layers, stop and ask the user.
+## Simplicity rules
 
-## Folder Conventions
+- The user supplies the configuration recorded for each arm. Do not infer,
+  retrieve, or independently reference backend configuration.
+- Do not add configuration provenance states, role tracking, approvals,
+  promotion rules, or release workflows.
+- Most experiments use two arms and one run per arm.
+- Keep the workflow understandable from the experiment directory alone.
 
-Use these top-level folders:
+## Folder conventions
 
-- `prompts/<jurisdiction>/` for jurisdiction-specific system prompts and prompt notes.
-- `testing/suites/<jurisdiction>/` for reusable query suites.
-- `testing/results/<jurisdiction>/` for generated Ask.Legal API outputs.
-- `testing/scripts/` for local testing utilities.
+- `prompts/<jurisdiction>/` contains new legal-analysis prompt versions.
+- `suites/<jurisdiction>/<suite-version>/questions.json` contains API queries.
+- `suites/<jurisdiction>/<suite-version>/expectations.json` contains optional
+  evaluation expectations.
+- `rubrics/` contains reusable agent-evaluation instructions.
+- `experiments/<jurisdiction>/<experiment-name>/experiment.yaml` defines the
+  comparison and both configurations.
+- `experiments/<jurisdiction>/<experiment-name>/runs/<arm>/` contains the one
+  saved run for that arm.
+- `evaluation.json` and `report.md` are written in the experiment directory.
+- `legacy/` contains the pre-reorganization workspace. Do not edit its contents
+  unless the user specifically asks for historical repair.
+- `tools/` contains the current runner; `tests/` contains its tests.
 
-## Prompt Naming
+## Versioning
 
-Use lowercase jurisdiction slugs and explicit prompt versions:
+- Use lowercase jurisdiction slugs.
+- Give every prompt and suite an explicit human-readable version.
+- Once a prompt or suite has been used in a completed run, do not edit it.
+  Create a new version instead.
+- Treat each Pinecone index name, such as `HK-v7`, as its index version.
+- Give each experiment a unique, descriptive folder name, preferably beginning
+  with an ISO date.
+- Never overwrite a completed arm run or reuse an experiment folder for a new
+  comparison.
 
-- `prompts/hong-kong/hk-prompt-v1.0.md`
-- `prompts/england-wales/ew-prompt-v5.0.md`
-- `prompts/singapore/sg-prompt-v1.0-a.md`
-- `prompts/singapore/sg-prompt-v1.0-b.md`
+## Experiment rules
 
-For Singapore A/B testing, A and B are prompt labels only. The API does not switch prompt versions. The development team manually deploys the prompt before each test run.
+- Questions contain exactly `id` and `query`.
+- Expectations are optional and separate from questions. Supported fields are
+  `id`, `must_cover`, `must_not_claim`, `critical_failures`, and `gold_answer`.
+- Store the complete safe configuration for each arm directly in
+  `experiment.yaml`, even where values repeat between arms.
+- Never store passwords, API keys, tokens, connection strings, or other secrets.
+- Manually deploy an arm before running it. The runner records the configuration
+  but does not send it to the Ask.Legal API.
+- One live run is permitted per arm. Create a new experiment to rerun.
 
-## Query Suite Rules
+## Evaluation rules
 
-Keep query suite objects simple. Do not add metadata fields unless the user asks for them.
+- Evaluation is performed manually by an agent after the runs are saved.
+- Evaluate each answer independently and compare matching answers side by side.
+- Write structured findings to `evaluation.json` and the final human-readable
+  analysis to `report.md`.
+- Do not make deployment, approval, promotion, or release decisions.
 
-For detailed query-suite generation requirements, read `testing/suites/README.md`.
+## API authentication and logs
 
-## Testing Results
+- Load authentication from `ASKLEGAL_API_KEY` or the ignored root `.env` file.
+- Never print, document, or copy the key into tracked files or chat.
+- Preserve raw API streams for each query.
+- Gateway logs are optional. If available, place sanitized exports under the
+  corresponding arm's `logs/` directory. Never store authentication material.
 
-Save one Markdown result file per prompt version:
+## Azure configuration import
 
-- `testing/results/singapore/sg-prompt-v1.0-a.md`
-- `testing/results/singapore/sg-prompt-v1.0-b.md`
+- The user may paste Azure settings into the ignored `.env.azure.local` file.
+- Never display or read the complete file into chat or tool output.
+- First run `python3 tools/inspect_azure_env.py`; it prints names only.
+- Treat names marked as likely secrets as prohibited experiment content.
+- Inspect values only for selected configuration candidates needed by the
+  experiment, and persist only those non-secret values in `experiment.yaml`.
+- If a value may itself contain credentials or a signed URL, stop and exclude it.
 
-Overwrite result files by default unless the user asks for archival run folders.
+## Verification
 
-## API Authentication
+After changing the runner or schemas, run:
 
-Use the local `api.txt` file as the default Ask.Legal API key source for the standalone runner. Never print, document, or copy the key into prompts, results, or chat.
+```bash
+python3 -m unittest discover -s tests
+python3 -m py_compile tools/run_experiment.py tools/inspect_azure_env.py
+```
 
-## Testing Pipeline
-
-Use `testing/scripts/run_asklegal_tests.py` as the final prompt testing pipeline. It sends the suite to the Ask.Legal API endpoint and writes one Markdown result file per prompt version.
-
-Supported API targets:
-
-- Local backend: `http://localhost:3003` for local prompt testing when Ask.Legal is running locally. In Codex, local backend requests may need approval to run outside the sandbox because sandboxed shell localhost may not reach the host backend.
-- Dev backend: `https://dev.ask.legal` for shared dev-environment testing. Use `--insecure` only when dev TLS certificate verification fails.
-
-The same `api.txt` API key flow is used for both targets.
+Maintain the current facts, decisions, and working state under `.agent/`.

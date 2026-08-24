@@ -1,0 +1,21 @@
+# Local credentials and environment files
+api.txt
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Captures and incomplete generated artifacts
+*.har
+*.partial.json
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS metadata (including legacy Finder Icon files)
+.DS_Store
+Icon?

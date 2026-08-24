@@ -1,5 +1,4 @@
 # Local credentials and environment files
-api.txt
 .env
 .env.*
 !.env.example
