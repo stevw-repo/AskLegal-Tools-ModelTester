@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "experiment": "2026-08-25-ew-gpt-5-4-vs-gpt-5-6-terra-retry",
+  "arm": "arm-b",
+  "label": "GPT-5.6 Terra",
+  "jurisdiction": "england-wales",
+  "api": {
+    "base_url": "https://api-dev.ask.legal",
+    "jurisdiction": "english"
+  },
+  "configuration": {
+    "routing_prompt": "intent-router-current",
+    "embedding_model": "text-embedding-3-small",
+    "index": "ask-legal-chatbot-uk-dataset-v4",
+    "index_host": "https://ask-legal-chatbot-uk-dataset-v4-fvdo14f.svc.aped-4627-b74a.pinecone.io",
+    "pinecone_namespace": "default",
+    "retrieval_top_k": 8,
+    "reranker_model": "none",
+    "model": "gpt-5.6-terra",
+    "reasoning_effort": "low",
+    "answer_prompt": "england-wales-v2",
+    "azure_openai_endpoint": "https://asklegal-prod.openai.azure.com/",
+    "azure_openai_api_version": "2024-12-01-preview"
+  },
+  "started_at": "2026-08-25T03:38:11+00:00",
+  "completed_at": "2026-08-25T03:40:48+00:00",
+  "execution": {
+    "parallel": 5,
+    "timeout_seconds": 180,
+    "delay_seconds": 0.5,
+    "retries": 2,
+    "retry_delay_seconds": 2.0,
+    "tls_verification": "enabled"
+  },
+  "inputs": {
+    "experiment": "experiments/england-wales/2026-08-25-ew-gpt-5-4-vs-gpt-5-6-terra-retry/experiment.yaml",
+    "suite": "suites/england-wales/legal-analysis-model-comparison-v1/questions.json",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "prompts": []
+  },
+  "summary": {
+    "questions": 15,
+    "succeeded": 15,
+    "failed": 0
+  }
+}

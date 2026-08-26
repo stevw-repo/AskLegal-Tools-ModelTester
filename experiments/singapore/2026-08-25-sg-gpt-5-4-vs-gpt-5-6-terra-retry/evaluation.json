@@ -1,0 +1,593 @@
+{
+  "format_version": 1,
+  "judge": {
+    "model": "gpt-5.6-sol",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "method": "Independent scoring followed by side-by-side comparison"
+  },
+  "independent_scores": [
+    {
+      "question_id": "sg-001",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly treats timing as possible pretext, explains overtime eligibility, and gives the urgent one-month wrongful-dismissal and six-month post-employment salary timelines. Safety retaliation is discussed only generally and without a specific workplace-safety authority.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-001",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 3,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 3
+      },
+      "reason": "Provides a sound pretext analysis, Part IV overtime caveat, and useful evidence plan, but answers the expressly urgent deadline question only by saying timelines are short and omits the one-month wrongful-dismissal deadline.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-002",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Accurately makes liability turn on the lease, causation, notice, and fair-wear-and-tear language, with relevant Singapore lease authorities. It is practical but vague about the available low-value forum and does not identify the Small Claims Tribunals route.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-002",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Covers lease allocation, causation, deposit deductions, losses, evidence, and possible Small Claims Tribunals eligibility in a highly usable sequence. Its legal propositions are less fully sourced, with only one case cited.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-003",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly applies the six-month non-conformity presumption and the repair-or-replace, proportionality, reasonable-time, significant-inconvenience, rescission, and tribunal provisions of CPFTA ss 14-18.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-003",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives the same complete statutory remedy sequence, accurately avoids presenting a refund as automatic, and supplies an auditable evidence-and-demand plan tied to CPFTA ss 14-18.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-004",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly explains informal electronic formation, substantial agreement, serious abandonment, and deposit/replacement-cost remedies with extensive case support. It gives only generic limitation guidance and less attention to source-code access and account security.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-004",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly states the formation elements, distinguishes delay from repudiatory abandonment, quantifies completion-cost damages net of the unpaid balance, flags IP terms, gives a six-year limitation point, and recommends securing systems while preserving evidence.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-005",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 4,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strongly covers road-user negligence, medical causation of later deterioration, contributory negligence, mitigation, damages heads, and the three-year personal-injury limitation urgency. It does not explain concrete Personal Injury Claims Protocol steps.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-005",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately separates liability, causation, contributory negligence, and damages, and states the later-of-accrual-or-knowledge limitation rule. Its pre-action section is generic and omits the applicable protocol's procedural detail.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-006",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Useful on child welfare, relative means, indirect contributions, HDB sale, and CPF refunds, but relies on Family Justice Rules 2014 for current procedure and discusses spousal maintenance without identifying claimant-eligibility limits. Its CPF sequencing is also oversimplified.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-006",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "More fully covers transfer or buy-out of the HDB flat, CPF allocation, parenting proposals, and package settlement. It shares the outdated Family Justice Rules 2014 citation and does not state the threshold limits on who may claim spousal maintenance.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-007",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly separates estate assets from CPF nominations and survivorship, states the spouse/issue split, distinguishes stepchildren, and expressly asks about domicile, Muslim status, title form, nominations, predeceased children, and the need for administration.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-007",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 3,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Provides a detailed and largely correct ISA analysis of domicile, spouse/issue shares, stepchildren, CPF, and co-ownership, but omits whether the deceased was Muslim, a potentially dispositive fact for the applicable succession regime.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-008",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly distinguishes company-owned directors' duty claims, s 216 oppression, and s 216A derivative relief, and ties exclusion and self-payments to legitimate expectations and fair dealing with statutory and case citations.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-008",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Substantively nuanced on oppression, director status, payment types, good faith, company loss, valuation, and avoiding double recovery, but supplies no statute sections or authorities for any of these central propositions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-009",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly focuses on employment-management purposes, notice, security, access, correction, and proportionality, but omits several core PDPA section citations and overstates mutual trust and confidence as a generally implied Singapore employment term.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-009",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Adds overseas-transfer analysis and a broad data-request checklist, but similarly overstates mutual trust and confidence and gives a questionable six-year retention suggestion while omitting the PDPA access, correction, and retention sections.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-010",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Thoroughly covers defamatory meaning, reference, publication and foreseeable republication, truth and privilege, malice, damages, injunction, retraction, evidence preservation, and the risk of amplifying the accusation.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-010",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 3
+      },
+      "reason": "The substantive defamation and immediate-remedy analysis is strong and well cited, but it states a generally applicable three-year knowledge-based defamation limitation framework without adequate support, creating a material procedural inaccuracy.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-011",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 3,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 3
+      },
+      "reason": "Accurately explains cautioned statements and CPC s 39 phone/password powers, but substitutes the general investigation provision for attendance powers and omits the crucial s 22(2) protection against answering questions that may expose the interviewee to a criminal charge.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-011",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly explains compulsory attendance under CPC s 21, witness questioning and self-incrimination under s 22, cautioned statements under s 23, and counsel limits. It is appropriately cautious but omits the concrete CPC s 39 device-access power.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-012",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly explains Commonwealth re-sealing, domicile evidence, creditor security, and the lack of authority from the will alone. It treats obtaining Malaysian probate first as the usual route and does not fully explain the direct Singapore-grant alternative or current probate rule.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-012",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Precisely covers re-sealing under PAA s 47, fresh Singapore probate under PAA s 11 and the current 2024 probate rule, authority over assets, authentication, translation, domicile, and creditor-security issues.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-013",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly frames substantial completion and defects as a proportionate set-off, gives a strong defects-particularisation plan, and canvasses SCT, State Courts, SOPA adjudication, mediation, and arbitration subject to eligibility.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-013",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Adds precise SOPA payment-response and enforcement provisions, identifies the Magistrate's Court for a S$18,000 civil claim, and supplies an especially clear claim and defects-matrix structure, while appropriately making statutory-route eligibility conditional.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-014",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strongly explains Bolam-Bolitho breach, systems liability, the counterfactual causation inquiry, incremental damages, records, experts, complaints, and limitation. Its reliance on the 2018 first-instance Noor Azlin outcome does not address later appellate history.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-014",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Matches the strong breach, causation, damages, expert, and limitation analysis and more clearly distinguishes civil negligence from the higher professional-misconduct threshold. It shares the incomplete reliance on the 2018 Noor Azlin first-instance disposition.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-015",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Carefully distinguishes silence from repudiation, states the s 12A urgency and tribunal-unavailability conditions, explains freezing evidence and undertakings, addresses asset location and Indonesian coordination, and integrates arbitration, anti-suit, and enforcement planning.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "sg-015",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly covers contract recovery, tribunal and court interim powers, asset tracing, and cross-border enforcement, but gives less detail on the freezing test, s 12A conditions, wrongful-termination risk, and coordinated Indonesian relief.",
+      "critical_failures": []
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "question_id": "sg-001",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b supplies the exact urgent filing periods the question asks for; arm-a only advises acting promptly.",
+      "material_regressions": [
+        "arm-a omits the one-month wrongful-dismissal deadline and the usual six-month post-employment salary-claim limit."
+      ]
+    },
+    {
+      "question_id": "sg-002",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Arm-a is better grounded in lease authorities, while arm-b is more complete and practical on itemisation, causation evidence, losses, and possible SCT use.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "sg-003",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both accurately and completely apply the same CPFTA remedy sequence to three failures within four months.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "sg-004",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b is more complete on repudiation, net completion-cost damages, IP/work-product control, account security, and limitation; arm-a has broader case citation coverage.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "sg-005",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both give strong liability, contributory-fault, damages, causation, evidence, and limitation analysis, but neither supplies concrete Personal Injury Claims Protocol steps.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "sg-006",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b more clearly covers HDB transfer or buy-out, CPF allocation, and a practical parenting/package proposal, though both share current-procedure and maintenance-eligibility defects.",
+      "material_regressions": [
+        "Both cite Family Justice Rules 2014 for current procedure and discuss spousal maintenance without identifying claimant-eligibility limits."
+      ]
+    },
+    {
+      "question_id": "sg-007",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b asks whether the deceased was Muslim and covers the grant of administration; arm-a omits a potentially dispositive succession regime.",
+      "material_regressions": [
+        "arm-a omits Muslim status from the additional facts needed."
+      ]
+    },
+    {
+      "question_id": "sg-008",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "The substantive analyses are similarly useful, but arm-a grounds oppression and derivative relief in statute and cases while arm-b provides no authorities at all.",
+      "material_regressions": [
+        "arm-b gives no statute sections or case authorities for its central corporate-law propositions."
+      ]
+    },
+    {
+      "question_id": "sg-009",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b is more focused and avoids arm-a's questionable six-year retention suggestion, but both overstate the mutual-trust-and-confidence proposition and incompletely cite the PDPA framework.",
+      "material_regressions": [
+        "Both present mutual trust and confidence as a generally implied Singapore employment term without addressing contrary current authority."
+      ]
+    },
+    {
+      "question_id": "sg-010",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Both are strong on the merits and urgent remedies, but arm-b introduces an inadequately supported three-year knowledge-based defamation limitation rule.",
+      "material_regressions": [
+        "arm-b's three-year defamation limitation statement is materially unreliable."
+      ]
+    },
+    {
+      "question_id": "sg-011",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Arm-a explains compulsory attendance and, critically, the statutory protection against self-incriminating answers; arm-b's superior phone-power analysis does not cure those omissions.",
+      "material_regressions": [
+        "arm-b omits CPC s 22(2) and does not explain the formal attendance order under s 21."
+      ]
+    },
+    {
+      "question_id": "sg-012",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b adds the direct Singapore-grant route and correctly cites the current 2024 probate rule while retaining the sound re-sealing and domicile analysis.",
+      "material_regressions": [
+        "arm-a does not fully address a fresh Singapore grant as an alternative to first obtaining Malaysian probate."
+      ]
+    },
+    {
+      "question_id": "sg-013",
+      "preferred": "arm-a",
+      "confidence": "close",
+      "reason": "Both correctly treat minor defects as a proportionate set-off, while arm-a adds more precise SOPA response rules, the Magistrate's Court route, and a stronger defects matrix.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "sg-014",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "The civil analysis is essentially equivalent; arm-b more clearly explains the distinct and higher professional-misconduct threshold for an SMC complaint.",
+      "material_regressions": [
+        "Both rely on the 2018 first-instance Noor Azlin causation outcome without addressing later appellate history."
+      ]
+    },
+    {
+      "question_id": "sg-015",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b gives the more precise s 12A conditions, freezing-order evidence, wrongful-termination warning, anti-suit option, and Indonesia-focused preservation strategy.",
+      "material_regressions": []
+    }
+  ],
+  "summary": {
+    "mean_scores": {
+      "arm-a": {
+        "legal_correctness": 4.07,
+        "issue_coverage": 4.33,
+        "grounding_and_citations": 3.87,
+        "jurisdiction_discipline": 4.80,
+        "usefulness_and_safety": 4.40,
+        "overall": 4.29
+      },
+      "arm-b": {
+        "legal_correctness": 4.20,
+        "issue_coverage": 4.67,
+        "grounding_and_citations": 3.73,
+        "jurisdiction_discipline": 4.93,
+        "usefulness_and_safety": 4.60,
+        "overall": 4.43
+      }
+    },
+    "preference_counts": {
+      "arm-a": 4,
+      "arm-b": 8,
+      "tie": 3
+    },
+    "critical_failure_counts": {
+      "arm-a": 0,
+      "arm-b": 0
+    },
+    "recurring_strengths": {
+      "arm-a": [
+        "Often provides dense statutory and case grounding, especially for corporate, criminal-procedure, consumer, and construction-payment issues.",
+        "Consistently supplies detailed evidence-preservation steps, issue-by-issue applications, and practical claim framing.",
+        "Strongest comparative answers identify self-incrimination protections and avoid unsupported deadline claims."
+      ],
+      "arm-b": [
+        "More consistently covers threshold facts and alternative routes, including Muslim intestacy, direct Singapore probate, IP/system security, and Indonesian asset strategy.",
+        "Action plans are generally focused, proportionate, and tied to the most urgent practical risk.",
+        "Frequently distinguishes similar legal routes clearly, such as personal oppression versus company loss and civil negligence versus professional discipline."
+      ]
+    },
+    "recurring_weaknesses": {
+      "arm-a": [
+        "Occasionally omits a decisive fact, deadline, current procedural route, or specific statutory power despite otherwise extensive analysis.",
+        "Some answers rely on outdated or incomplete procedural and case-history material, including Family Justice Rules 2014 and the first-instance Noor Azlin outcome.",
+        "Several answers are longer and more diffuse than needed for the practical decision presented."
+      ],
+      "arm-b": [
+        "Citation density is uneven; the corporate-law answer gives no authorities, and several PDPA propositions lack their controlling sections.",
+        "The defamation answer gives an inadequately supported three-year limitation statement, and the police-interview answer omits self-incrimination and attendance protections.",
+        "It shares some currency defects with arm-a, including mutual-trust-and-confidence, Family Justice Rules 2014, and incomplete Noor Azlin appellate history."
+      ]
+    },
+    "overall_findings": [
+      "Arm-b has the higher overall mean (4.43 versus 4.29), driven mainly by broader issue coverage, jurisdiction discipline, and practical usefulness; arm-a has the higher grounding-and-citations mean (3.87 versus 3.73).",
+      "Pairwise results are arm-b 8, arm-a 4, and tie 3; four of arm-b's preferences and two of arm-a's preferences are close rather than material across the whole answer.",
+      "Both arms are generally strong and Singapore-focused, but authority currency and a small number of high-impact omissions or unsupported procedural statements materially affect selected questions.",
+      "No critical failure was recorded under the rubric; identified defects were handled as dimension-score reductions and material regressions."
+    ],
+    "limitations": [
+      "No expectation file or gold answers were available.",
+      "No retrieval or gateway logs were available, so citation accuracy and retrieved support could not be verified from source context.",
+      "No external source checking was performed; plausible-looking citations were not assumed accurate, and the assessment relied only on repository inputs and the judge's legal analysis.",
+      "One gpt-5.6-sol LLM judge evaluated this jurisdiction and saw the arm identifiers and model names; model identity was not blinded, although answer-inspection order was alternated, and there was no second judge or inter-rater agreement check.",
+      "Each arm has one saved run only, so there are no repeated runs for assessing response variability.",
+      "Fifteen questions provide descriptive comparison only; no statistical inference is warranted.",
+      "The evaluation relies on the recorded configurations and does not independently verify what was deployed."
+    ]
+  }
+}

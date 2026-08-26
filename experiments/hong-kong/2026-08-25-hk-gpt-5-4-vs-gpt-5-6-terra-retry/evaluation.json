@@ -1,0 +1,595 @@
+{
+  "format_version": 1,
+  "judge": {
+    "model": "gpt-5.6-sol",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "method": "Independent scoring followed by side-by-side comparison"
+  },
+  "independent_scores": [
+    {
+      "question_id": "hk-001",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly separates earned-commission and notice claims from the narrower statutory retaliation route, and carefully explains that a purely internal complaint may not trigger the prohibited-dismissal protection.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-001",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Thoroughly covers commission, notice, remedies, evidence and the three-month notice, but describes protection for wage and safety complaints more broadly and with less statutory precision than the facts support.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-002",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives a complete causation, lease-term, quantum and evidence analysis, but relies on an unusually large set of authorities, several only tangentially connected to this residential leak and deposit dispute.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-002",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately focuses on tenancy wording, notice, source of leakage, causation and itemised loss, and gives a proportionate evidence and recovery plan with limited, relevant authorities.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-003",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly explains retailer liability despite the seven-day policy, legal acceptance and rejection under ss 37-38, the s 55 damages measure, and a practical repair, replacement, refund and escalation sequence.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-003",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly explains acceptance, rejection and the retailer's continuing responsibility, but omits the specific post-acceptance damages measure and lists several consumer statutes without connecting them to the facts.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-004",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strongly addresses formation, objective proof of terms, breach and alternative restitution, while appropriately conditioning full repayment on whether any delivered work had real value; its case discussion is somewhat more expansive than needed.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-004",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Precisely links electronic formation to Cap. 553 s 17, identifies provable terms from messages and conduct, and distinguishes termination damages from repayment where usable work may retain value.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-005",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 3
+      },
+      "reason": "The negligence, contributory-negligence, damages, evidence and three-year limitation analysis is useful, but the forum table wrongly directs sub-HK$75,000 personal-injury claims to the Small Claims Tribunal.",
+      "critical_failures": [
+        "Incorrectly states that a personal-injury claim under HK$75,000 may be brought in the Small Claims Tribunal, which does not have jurisdiction over personal-injury claims."
+      ]
+    },
+    {
+      "question_id": "hk-005",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 3
+      },
+      "reason": "It thoroughly covers liability, quantum, medical causation, evidence and the urgent three-year limit, but repeats the material error that a low-value personal-injury claim belongs in the Small Claims Tribunal.",
+      "critical_failures": [
+        "Incorrectly states that a personal-injury claim under HK$75,000 may be brought in the Small Claims Tribunal, which does not have jurisdiction over personal-injury claims."
+      ]
+    },
+    {
+      "question_id": "hk-006",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides a strong finance, housing, maintenance, disclosure and negotiation analysis, but treats children's arrangements mainly through housing and primary care and does not separately develop child maintenance or decision-making.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-006",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Integrates welfare-based parenting arrangements, child and spousal maintenance, housing affordability, retirement savings, disclosure and the LKW fairness framework into a coherent negotiation plan.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-007",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 3,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly explains administration priority, spouse and child shares, and sole versus joint ownership, but assumes Hong Kong intestacy rules govern the bank accounts without first determining the deceased's domicile.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-007",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly distinguishes administration from entitlement and, critically, distinguishes Hong Kong immovables from movables governed by domicile before calculating the statutory spouse and children shares.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-008",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Thoroughly covers unfair prejudice, derivative action, inspection and targeted records, but internally contradicts itself and wrongly advises that an exact 25% holder can block a special resolution requiring 75%.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-008",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Clearly distinguishes personal unfair-prejudice relief from company-focused derivative relief and gives strong inspection guidance, but also wrongly converts an exact 25% holding into power to block a 75% special resolution.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-009",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Comprehensively applies collection fairness, proportionality, notice, purpose limitation, retention, security, access and correction rules, and correctly explains that deletion is not an unrestricted right.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-009",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately treats home webcam monitoring as especially intrusive and explains notice, access, correction and limited deletion, but gives less separate attention to retention, security controls and later-use restrictions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-010",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly covers defamatory meaning, reference, publication, truth and evidence preservation, but understates the court's caution before granting an interim defamation injunction and gives a thinner account of qualified privilege.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-010",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Precisely states the prima facie elements and principal defences, properly cautions that interim prior restraint is exceptional, and ties malicious falsehood and s 24 to provable commercial harm.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-011",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives careful advice on voluntary attendance, silence, interview records, non-consensual seizure versus voluntary device access, preservation of evidence and immediate access to a criminal lawyer.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-011",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides safe and practical guidance on voluntary attendance, silence, identification, passwords and obtaining counsel before interview, though several stop-and-identify provisions are more peripheral than the interview rules.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-012",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly explains the need for a Hong Kong grant, foreign-domicile proof, real-property treatment, probate documents and Canadian tax review; the small-estate discussion is accurate but inapplicable once an apartment is present.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-012",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Cleanly separates the Hong Kong apartment from movables governed by domicile, identifies the provincial Canadian evidence needed, and accurately flags the post-11 February 2006 estate-duty position and transaction issues.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-013",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly identifies the Small Claims Tribunal, proof needed and enforcement economics, but assumes that forum without checking whether the service contract contains an arbitration or exclusive-forum clause.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-013",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly selects Small Claims for HK$58,000 while expressly checking arbitration, jurisdiction and non-monetary-relief limits, then provides a strong documents and enforcement-worthiness checklist.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-014",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 3
+      },
+      "reason": "The duty, breach, causation and loss analysis is substantial, but it relies on older disciplinary authorities and directs the user principally to HKICPA without addressing the current allocation of accounting regulatory and disciplinary functions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-014",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strongly distinguishes underlying liabilities from breach-caused penalties and carefully values the lost transaction, but gives no authorities and should identify the current Hong Kong accounting regulator rather than referring only generically to a body or regulator.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-015",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly prioritises the Hong Kong contract claim, distinguishes Hong Kong freezing relief from Mainland asset preservation, and plans early for reciprocal recognition and enforcement against identified Shenzhen assets.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "hk-015",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly addresses contract claims, Hong Kong injunction requirements, Mainland service and enforcement limits, but treats Mainland asset preservation and the reciprocal judgment framework less directly than the asset location demands.",
+      "critical_failures": []
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "question_id": "hk-001",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both are useful, but arm-b more accurately confines statutory retaliation protection and separates it from ordinary commission and notice claims.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-002",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b reaches the same sound result with tighter causation analysis and fewer weakly connected authorities.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-003",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b better explains the post-acceptance s 55 remedy and avoids arm-a's unsupported list of additional consumer statutes.",
+      "material_regressions": [
+        "arm-a: Lists several consumer statutes without applying them and omits the specific s 55 damages measure."
+      ]
+    },
+    {
+      "question_id": "hk-004",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both are strong; arm-b is more direct on electronic formation and the value credit due for any usable partial work.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-005",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both give sound negligence and limitation guidance but make the same material Small Claims Tribunal jurisdiction error.",
+      "material_regressions": [
+        "arm-a and arm-b: Incorrectly route low-value personal-injury claims to the Small Claims Tribunal."
+      ]
+    },
+    {
+      "question_id": "hk-006",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b more completely separates parenting arrangements, child maintenance and spousal maintenance while preserving the same sound finance analysis.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-007",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Arm-a catches the domicile-based conflict rule for bank accounts; arm-b applies Hong Kong intestacy shares without establishing that governing-law fact.",
+      "material_regressions": [
+        "arm-b: Assumes Hong Kong intestacy law governs movable bank balances without determining domicile at death."
+      ]
+    },
+    {
+      "question_id": "hk-008",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both otherwise give strong minority-remedy and inspection analysis, but both incorrectly say an exact 25% holding can block a 75% special resolution.",
+      "material_regressions": [
+        "arm-a and arm-b: Convert an exact 25% holding into a blocking stake despite the 75% special-resolution threshold."
+      ]
+    },
+    {
+      "question_id": "hk-009",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both are accurate, while arm-b more distinctly addresses later use, retention and security of the monitoring data.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-010",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b gives a materially safer account of the high interim-injunction threshold and a more complete treatment of privilege and malicious falsehood.",
+      "material_regressions": [
+        "arm-a: Understates the caution applied to interim restraints on allegedly defamatory speech."
+      ]
+    },
+    {
+      "question_id": "hk-011",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both are safe and practical; arm-b ties interview and lawyer-access advice more directly to the applicable questioning directions.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-012",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm-b is more focused on the actual foreign-domicile evidence and tax cutoff, whereas arm-a spends space on small-estate routes that the apartment excludes.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "hk-013",
+      "preferred": "arm-a",
+      "confidence": "close",
+      "reason": "Both identify Small Claims and enforcement risk, but arm-a uniquely checks arbitration and forum clauses before filing.",
+      "material_regressions": [
+        "arm-b: Omits the possibility that an arbitration or exclusive-forum clause changes the apparent Small Claims route."
+      ]
+    },
+    {
+      "question_id": "hk-014",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b gives the better loss and penalty analysis and avoids arm-a's dated direction to HKICPA, although it still should name the current regulator.",
+      "material_regressions": [
+        "arm-a: Relies on the former disciplinary allocation and directs the complaint principally to HKICPA without addressing current regulation."
+      ]
+    },
+    {
+      "question_id": "hk-015",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm-b makes Mainland asset preservation and reciprocal enforcement central, which is materially more useful where the supplier and assets are in Shenzhen.",
+      "material_regressions": [
+        "arm-a: Does not develop Mainland asset preservation or the reciprocal judgment framework to the same practical level."
+      ]
+    }
+  ],
+  "summary": {
+    "mean_scores": {
+      "arm-a": {
+        "legal_correctness": 4.07,
+        "issue_coverage": 4.60,
+        "grounding_and_citations": 3.60,
+        "jurisdiction_discipline": 4.93,
+        "usefulness_and_safety": 4.53,
+        "overall": 4.35
+      },
+      "arm-b": {
+        "legal_correctness": 4.47,
+        "issue_coverage": 4.80,
+        "grounding_and_citations": 3.93,
+        "jurisdiction_discipline": 4.80,
+        "usefulness_and_safety": 4.73,
+        "overall": 4.55
+      }
+    },
+    "preference_counts": {
+      "arm-a": 2,
+      "arm-b": 11,
+      "tie": 2
+    },
+    "critical_failure_counts": {
+      "arm-a": 1,
+      "arm-b": 1
+    },
+    "recurring_strengths": {
+      "arm-a": [
+        "Thorough issue spotting, evidence preservation and practical action plans.",
+        "Strong conflict-of-laws discipline on hk-007 and useful forum-clause caution on hk-013.",
+        "Consistently Hong Kong-focused analysis with appropriate factual qualifications."
+      ],
+      "arm-b": [
+        "More selective, concise use of legal rules and authorities.",
+        "Strong remedy and risk distinctions in consumer, defamation, criminal interview and cross-border enforcement answers.",
+        "Consistently practical next steps tied closely to the facts."
+      ]
+    },
+    "recurring_weaknesses": {
+      "arm-a": [
+        "Overinclusive or weakly connected authority lists reduce auditability.",
+        "Incorrect Small Claims guidance for personal injury and incorrect special-resolution blocking advice at exactly 25%.",
+        "Dated accounting-complaint route and occasionally insufficient caution around exceptional remedies."
+      ],
+      "arm-b": [
+        "Incorrect Small Claims guidance for personal injury and incorrect special-resolution blocking advice at exactly 25%.",
+        "Misses the domicile conflict for intestate movable assets on hk-007.",
+        "The professional-negligence answer does not name or ground the current accounting regulator."
+      ]
+    },
+    "overall_findings": [
+      "Arm-b has the higher overall independent mean, 4.55 versus 4.35, and is preferred on 11 questions; arm-a is preferred on 2, with 2 ties.",
+      "Arm-b's advantage is mainly greater legal precision, tighter issue coverage and more selective grounding, not a universal improvement across every question.",
+      "Arm-a is materially better on hk-007 because it identifies domicile as the governing-law fact for movables, and narrowly better on hk-013 because it checks dispute-resolution clauses.",
+      "Both arms share material errors on the personal-injury forum and the voting effect of an exact 25% shareholding."
+    ],
+    "limitations": [
+      "No expectation file or gold answers were available.",
+      "No retrieval logs or sanitized gateway logs were available.",
+      "No external source checking was performed, so citation existence, currency and proposition-level accuracy could not be independently verified.",
+      "One gpt-5.6-sol LLM judge evaluated this jurisdiction and saw the arm identifiers and model names; model identity was not blinded, although answer-inspection order was alternated, and there was no second judge or inter-rater agreement check.",
+      "Only one saved run per arm was available; there were no repeated runs.",
+      "The 15-question suite does not support statistical inference or causal attribution beyond the recorded model difference.",
+      "The evaluation relies on the recorded configurations and does not independently verify what was deployed."
+    ]
+  }
+}

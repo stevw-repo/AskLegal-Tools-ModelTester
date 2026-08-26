@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import math
 import json
 import os
 import re
@@ -15,6 +16,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from http import client as http_client
 from pathlib import Path
 from typing import Any
 from urllib import error, request
@@ -27,9 +29,29 @@ except ImportError as exc:  # pragma: no cover - depends on the local environmen
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_ENV_FILE = REPO_ROOT / ".env"
-DEFAULT_PARALLEL = 4
+DEFAULT_PARALLEL = 5
+DEFAULT_RETRIES = 2
+DEFAULT_RETRY_DELAY = 2.0
 ASSISTANT_GREETING = "Hello! I'm the Ask.Legal AI Assistant. How can I help you today?"
 SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
+SENSITIVE_CONFIGURATION_KEY = re.compile(
+    r"(?:^|_)(?:api_?key|key|secret|password|passwd|private_?key|"
+    r"connection_?string|credential|(?:access|auth|bearer|refresh)_?token|sas)"
+    r"(?:$|_)",
+    re.IGNORECASE,
+)
+EXPERIMENT_FIELDS = {
+    "format_version",
+    "name",
+    "jurisdiction",
+    "api",
+    "suite",
+    "expectations",
+    "rubric",
+    "arms",
+}
+API_FIELDS = {"base_url", "jurisdiction"}
+ARM_FIELDS = {"label", "configuration"}
 EXPECTATION_FIELDS = {
     "id",
     "must_cover",
@@ -55,10 +77,20 @@ class QueryResult:
     error: str
     duration_ms: int
     raw_body: bytes
+    attempts: int = 1
 
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def reject_unknown_fields(
+    value: dict[Any, Any], allowed: set[str], description: str
+) -> None:
+    unknown = [key for key in value if not isinstance(key, str) or key not in allowed]
+    if unknown:
+        names = ", ".join(sorted(repr(key) for key in unknown))
+        raise ValueError(f"{description} has unsupported fields: {names}")
 
 
 def load_experiment(path: Path) -> dict[str, Any]:
@@ -70,6 +102,7 @@ def load_experiment(path: Path) -> dict[str, Any]:
         raise ValueError("Experiment must be a YAML object.")
     if data.get("format_version") != 1:
         raise ValueError("Experiment format_version must be 1.")
+    reject_unknown_fields(data, EXPERIMENT_FIELDS, "Experiment")
 
     for field in ("name", "jurisdiction", "suite", "rubric"):
         if not isinstance(data.get(field), str) or not data[field].strip():
@@ -78,6 +111,7 @@ def load_experiment(path: Path) -> dict[str, Any]:
     api = data.get("api")
     if not isinstance(api, dict):
         raise ValueError("Experiment field 'api' must be an object.")
+    reject_unknown_fields(api, API_FIELDS, "Experiment api")
     for field in ("base_url", "jurisdiction"):
         if not isinstance(api.get(field), str) or not api[field].strip():
             raise ValueError(f"Experiment api.{field} must be a non-empty string.")
@@ -96,12 +130,14 @@ def load_experiment(path: Path) -> dict[str, Any]:
             raise ValueError(f"Invalid arm name: {arm_name!r}")
         if not isinstance(arm, dict):
             raise ValueError(f"Arm '{arm_name}' must be an object.")
+        reject_unknown_fields(arm, ARM_FIELDS, f"Arm '{arm_name}'")
         label = arm.get("label")
         if not isinstance(label, str) or not label.strip():
             raise ValueError(f"Arm '{arm_name}' must have a non-empty label.")
         configuration = arm.get("configuration")
         if not isinstance(configuration, dict) or not configuration:
             raise ValueError(f"Arm '{arm_name}' must have a non-empty configuration object.")
+        validate_configuration(configuration, arm_name)
         try:
             json.dumps(configuration)
         except (TypeError, ValueError) as exc:
@@ -111,6 +147,24 @@ def load_experiment(path: Path) -> dict[str, Any]:
             ) from exc
 
     return data
+
+
+def validate_configuration(value: Any, arm_name: str, path: str = "configuration") -> None:
+    """Reject non-string or secret-looking keys from a recorded configuration."""
+    if isinstance(value, dict):
+        for key, nested in value.items():
+            if not isinstance(key, str) or not key:
+                raise ValueError(
+                    f"Arm '{arm_name}' {path} keys must be non-empty strings."
+                )
+            if SENSITIVE_CONFIGURATION_KEY.search(key):
+                raise ValueError(
+                    f"Arm '{arm_name}' {path} contains prohibited secret field: {key}"
+                )
+            validate_configuration(nested, arm_name, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, nested in enumerate(value):
+            validate_configuration(nested, arm_name, f"{path}[{index}]")
 
 
 def load_questions(path: Path) -> list[dict[str, str]]:
@@ -150,10 +204,7 @@ def load_expectations(path: Path, question_ids: set[str]) -> list[dict[str, Any]
     for index, item in enumerate(data, start=1):
         if not isinstance(item, dict):
             raise ValueError(f"Expectation {index} must be an object.")
-        unknown_fields = set(item) - EXPECTATION_FIELDS
-        if unknown_fields:
-            names = ", ".join(sorted(unknown_fields))
-            raise ValueError(f"Expectation {index} has unsupported fields: {names}")
+        reject_unknown_fields(item, EXPECTATION_FIELDS, f"Expectation {index}")
         item_id = item.get("id")
         if not isinstance(item_id, str) or item_id not in question_ids:
             raise ValueError(f"Expectation {index} does not match a question id.")
@@ -237,13 +288,13 @@ def load_api_key(env_file: Path = DEFAULT_ENV_FILE) -> str:
 
 
 def auth_headers(api_key: str) -> dict[str, str]:
-    if not api_key:
+    token = re.sub(r"^bearer\s+", "", api_key.strip(), flags=re.IGNORECASE).strip()
+    if not token:
         return {}
-    bearer = api_key if api_key.lower().startswith("bearer ") else f"Bearer {api_key}"
     return {
-        "Authorization": bearer,
-        "X-API-Key": api_key,
-        "x-access-token": api_key,
+        "Authorization": f"Bearer {token}",
+        "X-API-Key": token,
+        "x-access-token": token,
     }
 
 
@@ -379,35 +430,77 @@ def execute_question(
     timeout: int,
     ssl_context: ssl.SSLContext,
     api_key: str,
+    retries: int = DEFAULT_RETRIES,
+    retry_delay: float = DEFAULT_RETRY_DELAY,
 ) -> QueryResult:
     started = time.perf_counter()
-    try:
-        stream = run_query(base_url, jurisdiction, item["query"], timeout, ssl_context, api_key)
+    max_attempts = retries + 1
+
+    for attempt in range(1, max_attempts + 1):
+        raw_body = b""
+        retryable = False
+        try:
+            stream = run_query(
+                base_url, jurisdiction, item["query"], timeout, ssl_context, api_key
+            )
+            raw_body = stream.raw_body
+            if stream.content.strip():
+                return QueryResult(
+                    id=item["id"],
+                    query=item["query"],
+                    conversation_id=stream.conversation_id,
+                    response=stream.content,
+                    error="",
+                    duration_ms=round((time.perf_counter() - started) * 1000),
+                    raw_body=stream.raw_body,
+                    attempts=attempt,
+                )
+            error_text = "ValueError: Ask.Legal returned an empty response."
+            retryable = True
+        except error.HTTPError as exc:
+            raw_body = exc.read()
+            error_text = f"HTTPError {exc.code}: {exc.reason}"
+            pool_timeout = (
+                exc.code == 401
+                and b"timed out fetching a new connection from the connection pool"
+                in raw_body.lower()
+            )
+            retryable = exc.code == 429 or 500 <= exc.code <= 599 or pool_timeout
+        except (
+            error.URLError,
+            TimeoutError,
+            ConnectionError,
+            ssl.SSLError,
+            http_client.HTTPException,
+        ) as exc:
+            error_text = f"{type(exc).__name__}: {exc}"
+            retryable = True
+        except Exception as exc:  # Keep a failed question in the run artifact.
+            error_text = f"{type(exc).__name__}: {exc}"
+
+        if retryable and attempt < max_attempts:
+            wait_seconds = retry_delay * attempt
+            print(
+                f"Retrying {item['id']} after attempt {attempt}/{max_attempts} "
+                f"({error_text})...",
+                flush=True,
+            )
+            if wait_seconds > 0:
+                time.sleep(wait_seconds)
+            continue
+
         return QueryResult(
             id=item["id"],
             query=item["query"],
-            conversation_id=stream.conversation_id,
-            response=stream.content,
-            error="",
+            conversation_id="",
+            response="",
+            error=error_text,
             duration_ms=round((time.perf_counter() - started) * 1000),
-            raw_body=stream.raw_body,
+            raw_body=raw_body,
+            attempts=attempt,
         )
-    except error.HTTPError as exc:
-        raw_body = exc.read()
-        error_text = f"HTTPError {exc.code}: {exc.reason}"
-    except Exception as exc:  # Keep a failed question in the run artifact.
-        raw_body = b""
-        error_text = f"{type(exc).__name__}: {exc}"
 
-    return QueryResult(
-        id=item["id"],
-        query=item["query"],
-        conversation_id="",
-        response="",
-        error=error_text,
-        duration_ms=round((time.perf_counter() - started) * 1000),
-        raw_body=raw_body,
-    )
+    raise AssertionError("Retry loop ended without a result.")
 
 
 def run_suite(
@@ -419,6 +512,8 @@ def run_suite(
     api_key: str,
     delay: float,
     parallel: int,
+    retries: int = DEFAULT_RETRIES,
+    retry_delay: float = DEFAULT_RETRY_DELAY,
 ) -> list[QueryResult]:
     if parallel <= 1:
         results: list[QueryResult] = []
@@ -426,7 +521,14 @@ def run_suite(
             print(f"[{index}/{len(questions)}] Sending {item['id']}...", flush=True)
             results.append(
                 execute_question(
-                    item, base_url, jurisdiction, timeout, ssl_context, api_key
+                    item,
+                    base_url,
+                    jurisdiction,
+                    timeout,
+                    ssl_context,
+                    api_key,
+                    retries,
+                    retry_delay,
                 )
             )
             if index < len(questions) and delay > 0:
@@ -437,8 +539,9 @@ def run_suite(
     workers = min(parallel, len(questions))
     print(f"Running {len(questions)} questions with {workers} workers.", flush=True)
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {
-            executor.submit(
+        futures = {}
+        for index, item in enumerate(questions):
+            future = executor.submit(
                 execute_question,
                 item,
                 base_url,
@@ -446,9 +549,12 @@ def run_suite(
                 timeout,
                 ssl_context,
                 api_key,
-            ): index
-            for index, item in enumerate(questions)
-        }
+                retries,
+                retry_delay,
+            )
+            futures[future] = index
+            if index < len(questions) - 1 and delay > 0:
+                time.sleep(delay)
         for completed, future in enumerate(as_completed(futures), start=1):
             index = futures[future]
             result = future.result()
@@ -482,6 +588,8 @@ def write_run(
     timeout: int,
     delay: float,
     tls_mode: str,
+    retries: int = DEFAULT_RETRIES,
+    retry_delay: float = DEFAULT_RETRY_DELAY,
 ) -> None:
     run_dir.mkdir(parents=True, exist_ok=False)
     raw_dir = run_dir / "raw"
@@ -503,6 +611,7 @@ def write_run(
                 "response": result.response,
                 "error": result.error or None,
                 "duration_ms": result.duration_ms,
+                "attempts": result.attempts,
                 "raw_file": raw_file,
             }
         )
@@ -538,6 +647,8 @@ def write_run(
             "parallel": parallel,
             "timeout_seconds": timeout,
             "delay_seconds": delay,
+            "retries": retries,
+            "retry_delay_seconds": retry_delay,
             "tls_verification": tls_mode,
         },
         "inputs": input_files,
@@ -559,9 +670,31 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument("experiment", type=Path, help="Path to experiment.yaml.")
     parser.add_argument("--arm", required=True, help="Arm name from the experiment file.")
-    parser.add_argument("--parallel", type=int, default=DEFAULT_PARALLEL)
+    parser.add_argument(
+        "--parallel",
+        type=int,
+        default=DEFAULT_PARALLEL,
+        help="Number of concurrent questions (default: 5).",
+    )
     parser.add_argument("--timeout", type=int, default=180)
-    parser.add_argument("--delay", type=float, default=0.5)
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=0.5,
+        help="Seconds between sequential requests or parallel submissions.",
+    )
+    parser.add_argument(
+        "--retries",
+        type=int,
+        default=DEFAULT_RETRIES,
+        help="Retries per question after the initial attempt (default: 2).",
+    )
+    parser.add_argument(
+        "--retry-delay",
+        type=float,
+        default=DEFAULT_RETRY_DELAY,
+        help="Base retry delay in seconds; the second retry waits twice as long (default: 2).",
+    )
     tls_group = parser.add_mutually_exclusive_group()
     tls_group.add_argument("--ca-bundle", type=Path)
     tls_group.add_argument("--insecure", action="store_true")
@@ -583,6 +716,12 @@ def main(argv: list[str]) -> int:
             raise ValueError("--timeout must be at least 1 second.")
         if args.delay < 0:
             raise ValueError("--delay cannot be negative.")
+        if args.retries < 0:
+            raise ValueError("--retries cannot be negative.")
+        if not math.isfinite(args.retry_delay):
+            raise ValueError("--retry-delay must be finite.")
+        if args.retry_delay < 0:
+            raise ValueError("--retry-delay cannot be negative.")
 
         experiment_path = args.experiment.resolve()
         try:
@@ -602,14 +741,11 @@ def main(argv: list[str]) -> int:
             expectations_path = resolve_repo_path(experiment["expectations"], "Expectations")
             load_expectations(expectations_path, {item["id"] for item in questions})
         rubric_path = resolve_repo_path(experiment["rubric"], "Rubric")
-        prompt_paths = collect_prompt_files(
-            experiment["arms"][args.arm]["configuration"]
-        )
+        arm = experiment["arms"][args.arm]
+        prompt_paths = collect_prompt_files(arm["configuration"])
 
         run_dir = experiment_path.parent / "runs" / args.arm
-        ensure_run_available(run_dir)
 
-        arm = experiment["arms"][args.arm]
         print(f"Experiment: {experiment['name']}")
         print(f"Arm: {args.arm} ({arm['label']})")
         print(f"Suite: {relative_repo_path(suite_path)} ({len(questions)} questions)")
@@ -620,6 +756,7 @@ def main(argv: list[str]) -> int:
         if args.dry_run:
             print("Dry run complete; no API requests or files were created.")
             return 0
+        ensure_run_available(run_dir)
         if not args.confirm_deployed:
             raise ValueError(
                 "Live runs require --confirm-deployed after manually deploying this arm."
@@ -650,6 +787,8 @@ def main(argv: list[str]) -> int:
             api_key=api_key,
             delay=args.delay,
             parallel=args.parallel,
+            retries=args.retries,
+            retry_delay=args.retry_delay,
         )
         write_run(
             run_dir=run_dir,
@@ -666,6 +805,8 @@ def main(argv: list[str]) -> int:
             timeout=args.timeout,
             delay=args.delay,
             tls_mode=tls_mode,
+            retries=args.retries,
+            retry_delay=args.retry_delay,
         )
         print(f"Wrote {relative_repo_path(run_dir)}")
         return 1 if any(result.error for result in results) else 0

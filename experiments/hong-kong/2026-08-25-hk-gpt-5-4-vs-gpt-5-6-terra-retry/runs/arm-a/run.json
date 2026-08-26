@@ -1,0 +1,46 @@
+{
+  "format_version": 1,
+  "experiment": "2026-08-25-hk-gpt-5-4-vs-gpt-5-6-terra-retry",
+  "arm": "arm-a",
+  "label": "GPT-5.4",
+  "jurisdiction": "hong-kong",
+  "api": {
+    "base_url": "https://api-dev.ask.legal",
+    "jurisdiction": "hongkong"
+  },
+  "configuration": {
+    "routing_prompt": "intent-router-current",
+    "embedding_model": "text-embedding-3-small",
+    "index": "ask-legal-chatbot-hk-dataset-v8",
+    "index_host": "https://ask-legal-chatbot-hk-dataset-v8-fvdo14f.svc.aped-4627-b74a.pinecone.io",
+    "pinecone_namespace": "default",
+    "retrieval_top_k": 8,
+    "reranker_model": "none",
+    "model": "gpt-5.4",
+    "reasoning_effort": "low",
+    "answer_prompt": "hong-kong-v2.0",
+    "azure_openai_endpoint": "https://asklegal-prod.openai.azure.com/",
+    "azure_openai_api_version": "2024-12-01-preview"
+  },
+  "started_at": "2026-08-25T03:00:49+00:00",
+  "completed_at": "2026-08-25T03:04:59+00:00",
+  "execution": {
+    "parallel": 5,
+    "timeout_seconds": 180,
+    "delay_seconds": 0.5,
+    "retries": 2,
+    "retry_delay_seconds": 2.0,
+    "tls_verification": "enabled"
+  },
+  "inputs": {
+    "experiment": "experiments/hong-kong/2026-08-25-hk-gpt-5-4-vs-gpt-5-6-terra-retry/experiment.yaml",
+    "suite": "suites/hong-kong/legal-analysis-model-comparison-v1/questions.json",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "prompts": []
+  },
+  "summary": {
+    "questions": 15,
+    "succeeded": 15,
+    "failed": 0
+  }
+}

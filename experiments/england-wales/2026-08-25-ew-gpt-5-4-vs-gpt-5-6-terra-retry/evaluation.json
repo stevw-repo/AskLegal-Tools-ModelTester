@@ -1,0 +1,606 @@
+{
+  "format_version": 1,
+  "judge": {
+    "model": "gpt-5.6-sol",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "method": "Independent scoring followed by side-by-side comparison"
+  },
+  "independent_scores": [
+    {
+      "question_id": "ew-001",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strong on whistleblowing dismissal, interim relief and evidence, but it does not develop the separate ERA 1996 s 104 automatic-dismissal route for asserting the unpaid-wages right and gives thinner coverage of ordinary/wrongful dismissal.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-001",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly separates whistleblowing, assertion-of-statutory-right, ordinary unfair dismissal and wrongful dismissal, and highlights both the seven-day interim-relief deadline and ACAS limitation steps with useful evidence guidance.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-002",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Useful treatment of notice, causation, deposit adjudication and the Housing Act 2004 non-protection sanction, but it omits the central Landlord and Tenant Act 1985 repairing/fitness provisions and local-authority enforcement options.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-002",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives sound evidence, causation, adjudication and environmental-health guidance, but does not explain the deposit-protection penalty and also fails to anchor the boiler/damp duties in the principal 1985 statutory provisions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-003",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly distinguishes warranty rights from CRA remedies and explains repair before final rejection after 30 days, but overemphasises CRA s 58 court powers and does not clearly ground the six-month presumption or the motor-vehicle deduction-for-use rule.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-003",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly applies satisfactory quality, the first-six-month presumption, the 30-day rejection boundary and repair/final-rejection sequence, with proportionate diagnostic and pre-action steps; the vehicle-specific deduction-for-use detail is only lightly addressed.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-004",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "The formation, fixed-price, repudiation and net completion-cost analysis is useful, but it cites internal files such as building-contracts.jsonl as authority, relies on peripheral cases, and omits the CRA 2015 reasonable-skill-and-care service duty.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-004",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides a coherent objective-formation and repudiation analysis with a sound net-loss calculation and practical mitigation steps; it too omits the CRA 2015 services provisions but avoids unsupported source references.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-005",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Covers primary negligence, apportionment, damages and protective issue, but infers too much from the insurer's partial-fault stance and includes an impossible future-dated authority, Ringe v Eden Springs [2112] EWHC 0014 (QB), among an excessive reference list.",
+      "critical_failures": [
+        "Impossible or fabricated future-dated citation: Ringe v Eden Springs (UK) Ltd [2112] EWHC 0014 (QB)."
+      ]
+    },
+    {
+      "question_id": "ew-005",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Leads safely with exact-date and disability questions, correctly warns that negotiation does not stop time, and gives a balanced negligence, contributory-fault and damages analysis with immediate protective-issue guidance.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-006",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Addresses housing, maintenance, pensions, child arrangements and the overall package, but relies on a long dated authority list and gives only general treatment of the CMS, the Children Act welfare framework and modern sharing/clean-break principles.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-006",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Separates child arrangements, CMS maintenance, spousal maintenance, housing, pensions and the global s 25 settlement, and adds important lender, pension-offsetting and clean-break cautions with modern leading authorities.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-007",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly flags no automatic intestacy right, the two-year 1975 Act route, beneficial ownership, domicile and the six-month grant deadline, but does not explain the cohabitant's maintenance standard and gives uncited, somewhat categorical occupation advice.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-007",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly explains the maintenance-based 1975 Act claim, possible home transfer and separate beneficial-interest route, but fails to flag the deceased's England-and-Wales domicile as a threshold jurisdictional fact and cites no trust/property authority.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-008",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly distinguishes company loss, derivative claims, personal rights and reflective loss, but discusses unfair prejudice without anchoring it in CA 2006 ss 994 and 996 and includes several peripheral authorities that dilute the answer.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-008",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Directly grounds conflicts, unfair prejudice, derivative standing and reflective loss in the relevant Companies Act provisions and leading cases, then maps each route to the correct claimant and remedy.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-009",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Thoroughly covers GDPR principles, interception, special-category risk and data rights, but relies on 2005/2011 employment-data guidance and Allen v Flood while giving limited treatment to the current DPIA/monitoring framework.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-009",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives a clear proportionality, transparency, interception, SAR and objection analysis with safe grievance/ICO steps, but does not expressly address DPIA duties, consent imbalance or biometric/special-category processing.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-010",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly explains meaning, identification, serious harm, defences, remedies and the one-year limit, but cites internal JSON files as authority and gives insufficient warning about the high threshold for an interim defamation injunction.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-010",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately sets out publication, reference, meaning and real-world serious harm, distinguishes individual and corporate claimants, and gives proportionate preservation, takedown, retraction and litigation-risk guidance with direct statutory support.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-011",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 3,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Sound on legal advice, interview strategy, recording and consent to phone access, but it does not clearly state the voluntary attendee's fundamental right to leave unless arrested and gives no concrete compelled-access framework.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-011",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 5,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Explicitly states the right to leave, free legal advice, caution/disclosure safeguards and the risks of silence, while carefully separating bringing, surrendering, unlocking, extracting and formally seizing the phone.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-012",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 3,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly warns that French authority alone is insufficient and that an English grant is needed, but devotes substantial space to archaic administration jurisdiction and does not adequately distinguish administration law from the choice of law governing beneficial succession to movables and land.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-012",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Focuses usefully on proving the French will, domicile, the correct English grant and asset protection, but remains incomplete on the governing law for beneficial succession, French/EU succession interaction and concrete tax/reporting deadlines.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-013",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Provides strong evidence, track, costs and enforcement checklists, but omits the conditional Pre-Action Protocol for Debt Claims route and gives only vague treatment of Late Payment Act interest and fixed compensation.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-013",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly conditions the Debt Claims Protocol on an individual/sole-trader debtor, explains small-claims costs and default/enforcement routes, and warns against insolvency pressure, though the statutory interest rate/compensation and current ADR procedure are not fully specified.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-014",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly addresses duty, enforceability, counterfactual causation and diminution in value, but omits limitation protection and Ombudsman time limits and gives an oversimplified £50,000 High Court/County Court forum statement.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-014",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides a disciplined duty/causation/loss framework, distinguishes complaint routes, warns not to prejudice indemnity insurance and flags limitation, though it does not give the applicable six-year/latent-damage or Ombudsman deadlines.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-015",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Covers repayment, damages, interim relief, English jurisdiction and German enforcement, but repeatedly cites internal retrieval filenames, adds peripheral intra-UK/EU authorities and does not identify the Hague 2005 recognition route for an exclusive jurisdiction clause.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "ew-015",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives focused termination, repayment, specific-performance, freezing-risk and German asset/insolvency guidance and correctly treats enforcement as the central commercial issue; it still omits the Hague 2005 recognition framework and detailed post-Brexit enforcement route.",
+      "critical_failures": []
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "question_id": "ew-001",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B materially improves claim coverage by adding the ERA s 104 statutory-right dismissal route and a fuller alternative-dismissal analysis while preserving the same urgent deadline advice.",
+      "material_regressions": [
+        "Arm A omits the separate automatic-unfair-dismissal route based on asserting the unpaid-wages right."
+      ]
+    },
+    {
+      "question_id": "ew-002",
+      "preferred": "arm-a",
+      "confidence": "close",
+      "reason": "Both omit core 1985 housing-condition provisions, but Arm A is more complete on deposit protection, the one-to-three-times sanction and the distinct County Court route.",
+      "material_regressions": [
+        "Arm B omits the statutory deposit-protection sanction and prescribed-information claim."
+      ]
+    },
+    {
+      "question_id": "ew-003",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B gives the clearer statutory sequence, expressly explains the first-six-month presumption and keeps the requested remedy proportional to the six-week timing.",
+      "material_regressions": [
+        "Arm A does not clearly ground the six-month presumption and overweights peripheral court-remedy provisions."
+      ]
+    },
+    {
+      "question_id": "ew-004",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B reaches the same practical contract and damages conclusions with cleaner authority and without treating internal retrieval filenames as legal sources.",
+      "material_regressions": [
+        "Arm A cites internal JSON retrieval files as authority."
+      ]
+    },
+    {
+      "question_id": "ew-005",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B is safer and more focused on the imminent limitation problem, while Arm A contains an impossible future-dated citation and a less reliable inference from the insurer's stance.",
+      "material_regressions": [
+        "Arm A includes the impossible citation Ringe v Eden Springs [2112] EWHC 0014 (QB)."
+      ]
+    },
+    {
+      "question_id": "ew-006",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B better separates the child, CMS, spousal, housing, pension and overall-settlement regimes and uses a more current, coherent fairness framework.",
+      "material_regressions": [
+        "Arm A gives only general CMS and child-welfare treatment and relies on an excessive dated case list."
+      ]
+    },
+    {
+      "question_id": "ew-007",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Arm A catches the deceased-domicile threshold; Arm B better states the cohabitant maintenance standard. Each has a material omission, and both otherwise give sound estate/home routes and deadline advice.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "ew-008",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B anchors every major route in the correct Companies Act provisions and maps company, derivative and personal remedies more precisely.",
+      "material_regressions": [
+        "Arm A discusses unfair prejudice without citing or explaining CA 2006 ss 994 and 996."
+      ]
+    },
+    {
+      "question_id": "ew-009",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Arm A spots more special-category issues, but Arm B is more proportionate and operationally safe, with cleaner authority and clearer SAR, objection and escalation steps.",
+      "material_regressions": [
+        "Arm A relies on dated employment-data guidance and peripheral managerial-discretion authority."
+      ]
+    },
+    {
+      "question_id": "ew-010",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both are substantively strong, but Arm B is better grounded, more concise and more cautious about litigation and injunctive relief; Arm A cites unavailable internal source files.",
+      "material_regressions": [
+        "Arm A cites internal JSON files as authority and understates the difficulty of interim defamation restraint."
+      ]
+    },
+    {
+      "question_id": "ew-011",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B includes the fundamental right of a voluntary attendee to leave and gives the clearest distinction between possessing, surrendering, unlocking and extracting the phone.",
+      "material_regressions": [
+        "Arm A fails to state clearly that the attendee may leave unless arrested."
+      ]
+    },
+    {
+      "question_id": "ew-012",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B focuses on the actual foreign-will recognition and grant problem, whereas Arm A devotes substantial space to peripheral administration jurisdiction without resolving the key choice-of-law distinction.",
+      "material_regressions": [
+        "Arm A inadequately distinguishes administration law from the law governing beneficial succession."
+      ]
+    },
+    {
+      "question_id": "ew-013",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B adds the debtor-status-dependent Debt Claims Protocol, better pre-action structure and a clearer warning against insolvency pressure while retaining strong evidence and enforcement guidance.",
+      "material_regressions": [
+        "Arm A omits the conditional Pre-Action Protocol for Debt Claims route."
+      ]
+    },
+    {
+      "question_id": "ew-014",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "The core negligence analysis is similar, but Arm B adds practical insurance-protection and limitation cautions and avoids Arm A's oversimplified court-forum threshold.",
+      "material_regressions": [
+        "Arm A omits limitation protection and gives an oversimplified forum threshold."
+      ]
+    },
+    {
+      "question_id": "ew-015",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B gives a more commercially useful remedy and German asset-preservation analysis with cleaner authority; both omit the Hague 2005 enforcement framework, but Arm A also relies on internal source filenames and peripheral rules.",
+      "material_regressions": [
+        "Arm A relies on internal retrieval filenames and peripheral jurisdiction authorities."
+      ]
+    }
+  ],
+  "summary": {
+    "mean_scores": {
+      "arm-a": {
+        "legal_correctness": 3.87,
+        "issue_coverage": 4.13,
+        "grounding_and_citations": 3.00,
+        "jurisdiction_discipline": 5.00,
+        "usefulness_and_safety": 4.20,
+        "overall": 4.04
+      },
+      "arm-b": {
+        "legal_correctness": 4.47,
+        "issue_coverage": 4.67,
+        "grounding_and_citations": 4.13,
+        "jurisdiction_discipline": 4.93,
+        "usefulness_and_safety": 5.00,
+        "overall": 4.64
+      }
+    },
+    "preference_counts": {
+      "arm-a": 1,
+      "arm-b": 13,
+      "tie": 1
+    },
+    "critical_failure_counts": {
+      "arm-a": 1,
+      "arm-b": 0
+    },
+    "recurring_strengths": {
+      "arm-a": [
+        "Comprehensive issue spotting and detailed evidence checklists.",
+        "Consistent England-and-Wales jurisdiction discipline.",
+        "Frequent attention to limitation, causation, mitigation and enforcement practicality."
+      ],
+      "arm-b": [
+        "Clear separation of claims, parties, forums and remedies.",
+        "More direct use of governing statutory provisions and leading authorities.",
+        "Concise, safe action plans that foreground urgent deadlines and evidence preservation."
+      ]
+    },
+    "recurring_weaknesses": {
+      "arm-a": [
+        "Overlong and sometimes dated or peripheral authority lists obscure the governing rule.",
+        "Internal retrieval filenames are cited as authority in ew-004, ew-010 and ew-015, and ew-005 contains an impossible future-dated citation.",
+        "Several key statutory or procedural routes are omitted or underdeveloped, including ERA s 104, CA 2006 ss 994/996, the voluntary attendee's right to leave and the Debt Claims Protocol."
+      ],
+      "arm-b": [
+        "Some answers still omit important secondary frameworks, including the principal 1985 housing provisions, the domicile threshold in ew-007, DPIA specifics and the Hague 2005 enforcement route.",
+        "Cross-border succession and enforcement answers identify the need for local advice but do not fully resolve governing-law and recognition mechanics.",
+        "Citation accuracy could not be externally verified, and several recent authorities therefore remain unconfirmed."
+      ]
+    },
+    "overall_findings": [
+      "Arm B's mean overall score was 4.64, compared with 4.04 for Arm A.",
+      "Pairwise findings were 13 preferences for Arm B, 1 for Arm A and 1 tie; three of Arm B's preferences were close and ten were confident.",
+      "The largest aggregate difference was grounding and citations: 4.13 for Arm B versus 3.00 for Arm A.",
+      "Both arms remained strongly disciplined to England and Wales and generally gave safe, practical next steps.",
+      "The findings describe saved-answer quality only and do not establish that the model change caused any observed difference."
+    ],
+    "limitations": [
+      "No expectation file or gold answers were available.",
+      "No retrieval or gateway logs were available to verify whether authorities were retrieved or supported by source context.",
+      "No external source checking was performed, so plausible-looking citations were not assumed accurate and recent authorities remain unverified unless internally checkable.",
+      "One gpt-5.6-sol LLM judge evaluated this jurisdiction and saw the arm identifiers and model names; model identity was not blinded, although answer-inspection order was alternated, and there was no second judge or inter-rater agreement check.",
+      "Each arm contains one saved run only; there were no repeated runs to assess response variability.",
+      "The 15-question suite is a purposive comparison set, not a basis for statistical inference.",
+      "The evaluation scores saved answers and does not verify which recorded backend configuration was actually deployed."
+    ]
+  }
+}

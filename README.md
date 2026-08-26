@@ -55,7 +55,7 @@ First validate the experiment without making API calls:
 
 ```bash
 python3 tools/run_experiment.py \
-  experiments/hong-kong/2026-08-24-hk-v7-v8/experiment.yaml \
+  experiments/hong-kong/2026-08-24-hk-gpt-5-4-vs-gpt-5-6-terra/experiment.yaml \
   --arm arm-a \
   --dry-run
 ```
@@ -64,7 +64,7 @@ After manually deploying the displayed configuration:
 
 ```bash
 python3 tools/run_experiment.py \
-  experiments/hong-kong/2026-08-24-hk-v7-v8/experiment.yaml \
+  experiments/hong-kong/2026-08-24-hk-gpt-5-4-vs-gpt-5-6-terra/experiment.yaml \
   --arm arm-a \
   --confirm-deployed
 ```
@@ -72,7 +72,8 @@ python3 tools/run_experiment.py \
 Repeat for `arm-b` after manually deploying its configuration. The runner
 refuses to overwrite an existing arm run.
 
-Create a persistent local `.env` from the tracked example and add the key:
+If the ignored root `.env` does not already exist, create it from the tracked
+example:
 
 ```bash
 cp .env.example .env
@@ -85,6 +86,17 @@ ASKLEGAL_API_KEY=your-key-here
 The root `.env` is ignored by Git. `ASKLEGAL_API_KEY` set directly in the
 environment takes precedence when present. Never put credentials in an
 experiment file, result, log, prompt, or chat.
+
+Runs use up to 5 concurrent requests by default. Use `--parallel N` to choose a
+different limit.
+
+Each question is attempted once and retried up to two times when it receives a
+transient failure: HTTP 429, HTTP 5xx, a network error or timeout, an empty
+response, or the known Prisma connection-pool timeout returned as HTTP 401.
+Ordinary authentication errors and HTTP 402 quota errors are not retried. Use
+`--retries N` and `--retry-delay SECONDS` to override the defaults. Saved
+responses record how many attempts were needed. The default retry waits are 2
+seconds and then 4 seconds.
 
 ## Import Azure configuration
 

@@ -21,47 +21,52 @@ The runner creates each arm's run directory. Do not create it before running.
 
 ```yaml
 format_version: 1
-name: 2026-08-24-hk-v7-v8
+name: 2026-08-24-hk-gpt-5-4-vs-gpt-5-6-terra
 jurisdiction: hong-kong
 
 api:
-  base_url: https://dev.ask.legal
+  base_url: https://api-dev.ask.legal
   jurisdiction: hongkong
 
-suite: suites/hong-kong/hk-general-v1/questions.json
-expectations: suites/hong-kong/hk-general-v1/expectations.json
+suite: suites/hong-kong/legal-analysis-model-comparison-v1/questions.json
 rubric: rubrics/legal-analysis-v1.md
 
 arms:
   arm-a:
-    label: HK-v7
+    label: GPT-5.4
     configuration:
-      query_analysis_model: model-name
-      query_analysis_prompt: prompts/hong-kong/hk-query-analysis-v1.md
-      query_rewrite_model: model-name
-      query_rewrite_prompt: prompts/hong-kong/hk-query-rewrite-v1.md
-      embedding_model: embedding-model-name
-      index: HK-v7
-      retrieval_top_k: 6
-      reranker_model: reranker-name
-      answer_model: answer-model-name
-      answer_prompt: prompts/hong-kong/hk-answer-v1.md
+      routing_prompt: intent-router-current
+      embedding_model: text-embedding-3-small
+      index: ask-legal-chatbot-hk-dataset-v8
+      index_host: https://example.pinecone.io
+      pinecone_namespace: default
+      retrieval_top_k: 8
+      reranker_model: none
+      model: gpt-5.4
+      reasoning_effort: medium
+      answer_prompt: hong-kong-v2.0
+      azure_openai_endpoint: https://example.openai.azure.com/
+      azure_openai_api_version: 2024-12-01-preview
 
   arm-b:
-    label: HK-v8
+    label: GPT-5.6 Terra
     configuration:
-      query_analysis_model: model-name
-      query_analysis_prompt: prompts/hong-kong/hk-query-analysis-v1.md
-      query_rewrite_model: model-name
-      query_rewrite_prompt: prompts/hong-kong/hk-query-rewrite-v1.md
-      embedding_model: embedding-model-name
-      index: HK-v8
-      retrieval_top_k: 6
-      reranker_model: reranker-name
-      answer_model: answer-model-name
-      answer_prompt: prompts/hong-kong/hk-answer-v1.md
+      routing_prompt: intent-router-current
+      embedding_model: text-embedding-3-small
+      index: ask-legal-chatbot-hk-dataset-v8
+      index_host: https://example.pinecone.io
+      pinecone_namespace: default
+      retrieval_top_k: 8
+      reranker_model: none
+      model: gpt-5.6-terra
+      reasoning_effort: medium
+      answer_prompt: hong-kong-v2.0
+      azure_openai_endpoint: https://example.openai.azure.com/
+      azure_openai_api_version: 2024-12-01-preview
 ```
 
-Remove `expectations` when the suite has none. Configuration fields are flexible:
-record the values needed to understand the comparison, but never include secrets.
-The runner saves these values for the report; it does not send them to the API.
+Add `expectations` only when the suite has them. Configuration fields are
+flexible: record the values needed to understand the comparison, but never
+include secrets. The runner rejects unsupported experiment/API fields and
+secret-looking configuration keys. It saves configuration for the report and
+does not send it to the API.

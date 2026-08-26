@@ -1,0 +1,590 @@
+{
+  "format_version": 1,
+  "judge": {
+    "model": "gpt-5.6-sol",
+    "rubric": "rubrics/legal-analysis-v1.md",
+    "method": "Independent scoring followed by side-by-side comparison"
+  },
+  "independent_scores": [
+    {
+      "question_id": "au-001",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly separates likely Commonwealth claims from contingent NSW routes, gives the unfair-dismissal deadline, and provides strong evidence-preservation steps; the general-protections deadline and provisions are left less explicit than they should be.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-001",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives both Commonwealth dismissal routes a clear 21-day warning and preserves the key retaliation chronology, but relies on an irrelevant unlawful-termination reference and does not cite the core general-protections provisions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-002",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly focuses on tenant causation, notice of the leak, bond evidence, and Victorian procedure, but states the 14-day VCAT period as applying generally to a renter and presents a difficult-to-follow account of the RTBA repayment mechanism.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-002",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Provides a clear causation-based bond defence and useful evidence plan under Victorian law, but likewise overgeneralizes the 14-day VCAT application period and does not explain the RTBA notice sequence fully.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-003",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately explains non-excludable ACL guarantees, major versus non-major failures, supplier and manufacturer remedies, installation services, consequential loss, and a parallel Queensland sale-of-goods route.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-003",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Describes the broad ACL remedy logic and manufacturer path, but omits the central acceptable-quality and supplier-remedy provisions for goods, does not cover the Queensland sale-of-goods claim, and spends substantial space on an irrelevant motor-vehicle jurisdiction provision.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-004",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Thoroughly addresses electronic contract formation, abandonment, statutory warranties, the NSW 10% deposit cap, ACL misrepresentation, and completion or rectification loss with a practical evidence plan.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-004",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strong on electronic formation, Home Building Act formalities, repudiation, statutory warranties, rectification and NCAT strategy, but it omits the conspicuous statutory question whether the large deposit exceeded the 10% cap.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-005",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 3,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Gives a sound occupier-negligence framework, contributory-fault analysis, damages categories, urgent three-year warning and extension caveat, but does not ground breach, contributory negligence or damages in South Australia's civil-liability legislation.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-005",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Covers every requested topic and gives a detailed limitation-extension analysis, but the statement about a three-year maximum under s 48 is unclear and potentially misleading, while the South Australian civil-liability rules remain uncited.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-006",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 1,
+        "grounding_and_citations": 1,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 1
+      },
+      "reason": "Correctly recognizes that married and de facto property regimes differ in Western Australia, but supplies no parenting, child-support, maintenance, property, superannuation, deadline, or practical-step analysis at all.",
+      "critical_failures": [
+        "Did not answer the substantive family-law question and only requested clarification, although a conditional married/de facto analysis was available."
+      ]
+    },
+    {
+      "question_id": "au-006",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "States a transparent married-couple assumption, flags the WA de facto distinction, and gives useful parenting, child-support, maintenance, property, superannuation and first-step guidance; core family-law provisions are sparsely cited.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-007",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly distinguishes estate assets, survivorship and superannuation and identifies the blended-family rule, but omits the threshold under which the surviving partner takes the whole residuary estate if it does not exceed the statutory legacy.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-007",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Accurately separates jointly owned land and superannuation from estate assets, states both branches of Victoria's statutory-legacy rule, identifies all relevant beneficiaries, and gives a complete administration document plan.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-008",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Strongly distinguishes oppression from company loss, derivative standing and urgent relief, but gives no direct treatment of the core statutory directors' duties and is burdened by more case citation than the practical analysis requires.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-008",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Clearly maps oppression, derivative, constitutional and injunctive routes to the alleged conduct and likely objectives, though it too relies on general-law duties without citing the principal statutory director-duty provisions.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-009",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly classifies computer, camera and tracking surveillance, explains notice, policy and use restrictions, and adds careful Privacy Act, surveillance-device and interception caveats for home monitoring.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-009",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives a detailed NSW surveillance analysis, expressly identifies the after-hours restriction in s 16, and handles the Commonwealth employee-records exemption and third-party data cautiously and practically.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-010",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 2,
+        "issue_coverage": 3,
+        "grounding_and_citations": 2,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly discusses multi-state publication, concerns notices and takedown relief, but incorrectly treats serious harm as a defence under ss 33 and 39 and attributes it to a 2019 decision, while omitting several central statutory defences.",
+      "critical_failures": [
+        "Materially misstates the serious-harm requirement as a defence under ss 33 and 39 and relies on a 2019 case for that proposition."
+      ]
+    },
+    {
+      "question_id": "au-010",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly treats serious harm as an element, cites justification and the concerns-notice process accurately, and gives effective takedown and injunction steps, although other likely defences and the closest-connection rule are underdeveloped.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-011",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 3,
+        "issue_coverage": 4,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides safe practical guidance on voluntary attendance, silence, consent, device access and preservation, but uses s 464J on admissions as the principal statutory footing instead of identifying the custodial legal-advice protections in s 464C.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-011",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 4,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly distinguishes voluntary attendance from custody, cites the s 464C right to communicate privately with a lawyer before questioning, and gives cautious phone-consent advice; the police-premises discussion is largely irrelevant.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-012",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Correctly identifies the New Zealand reseal route and asset-situs inquiry, but devotes substantial attention to remote agent, special-administration and service issues and is less disciplined about the broker assets' possible situs.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-012",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 5,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Cleanly covers will validity, New Zealand grant resealing, the Tasmanian land, asset-by-asset situs for broker holdings, incidental Commonwealth tax issues, and the exact document and valuation steps needed.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-013",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly places A$22,000 within ACAT's A$25,000 jurisdiction and gives strong pre-action, evidence, court-cost, settlement and enforcement guidance, though ACAT's own costs rule is not stated.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-013",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Correctly explains ACAT jurisdiction and relaxed evidence rules and adds the important default costs position, filing-fee exception, court alternative and pre-filing recoverability assessment.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-014",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 4,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Strongly separates tax review from accountant liability and analyzes retainer, counterfactual causation, underlying tax, penalties, remediation costs and transaction loss, but gives no primary authority for the tax-review pathway or NSW negligence rules.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-014",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Gives a clear professional-negligence, causation, loss and tax-objection workflow with appropriate mitigation advice, but cites only an administrative-penalty provision and leaves the primary review and NSW negligence authorities ungrounded.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-015",
+      "arm": "arm-b",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 3,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 5
+      },
+      "reason": "Provides a disciplined contract, termination, freezing-order, NSW forum and Queensland enforcement analysis with strong cautions on dissipation evidence and undertakings, but does not identify the statutory interstate judgment-registration mechanism.",
+      "critical_failures": []
+    },
+    {
+      "question_id": "au-015",
+      "arm": "arm-a",
+      "scores": {
+        "legal_correctness": 4,
+        "issue_coverage": 5,
+        "grounding_and_citations": 4,
+        "jurisdiction_discipline": 5,
+        "usefulness_and_safety": 4
+      },
+      "reason": "Thoroughly covers contractual remedies, freezing relief over interstate assets, exclusive versus non-exclusive forum clauses and cross-vesting, but is overextended and still leaves the actual interstate judgment-enforcement mechanism generic.",
+      "critical_failures": []
+    }
+  ],
+  "pairwise_comparisons": [
+    {
+      "question_id": "au-001",
+      "preferred": "arm-a",
+      "confidence": "close",
+      "reason": "Both are strong, but arm A states the 21-day general-protections dismissal deadline directly while arm B leaves that deadline to urgent confirmation.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-002",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both give substantially the same sound causation and evidence analysis and both share the same overbroad presentation of the 14-day VCAT period.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-003",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B grounds the central goods remedies in the ACL and adds Queensland sale-of-goods law; arm A omits those core provisions and detours into irrelevant motor-vehicle jurisdiction.",
+      "material_regressions": [
+        "Arm A omits the central ACL acceptable-quality and supplier-remedy provisions for goods."
+      ]
+    },
+    {
+      "question_id": "au-004",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Arm A covers the salient NSW 10% deposit cap and possible ACL misrepresentation claim, both omitted by arm B despite the question emphasizing a large deposit and statutory issues.",
+      "material_regressions": [
+        "Arm B omits the statutory maximum-deposit issue."
+      ]
+    },
+    {
+      "question_id": "au-005",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Arm A gives more limitation detail but includes a questionable s 48 formulation; arm B is cleaner but thinner on South Australian negligence and damages law.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-006",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B answers conditionally and comprehensively; arm A only asks whether the relationship was married or de facto and provides no substantive guidance.",
+      "material_regressions": [
+        "Arm A is a non-answer to the requested family-law analysis."
+      ]
+    },
+    {
+      "question_id": "au-007",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Arm A includes the threshold under which the surviving partner takes the whole estate; arm B omits that qualifier and can therefore misstate the children's entitlement in a smaller estate.",
+      "material_regressions": [
+        "Arm B omits the statutory-legacy threshold before children share the residue."
+      ]
+    },
+    {
+      "question_id": "au-008",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both identify the right remedies, but arm B maps personal, derivative, constitutional and injunctive routes to their objectives more clearly and economically.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-009",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Arm A is stronger on the express after-hours restriction; arm B is broader on overlapping privacy, surveillance-device and interception issues, and both are practical and cautious.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-010",
+      "preferred": "arm-b",
+      "confidence": "confident",
+      "reason": "Arm B correctly treats serious harm as an element and gives an accurate concerns-notice route; arm A materially misstates serious harm as a defence under the wrong provisions.",
+      "material_regressions": [
+        "Arm A's serious-harm proposition and supporting statutory references are materially unreliable."
+      ]
+    },
+    {
+      "question_id": "au-011",
+      "preferred": "arm-a",
+      "confidence": "confident",
+      "reason": "Arm A identifies the specific Victorian custodial right to communicate privately with a lawyer under s 464C, whereas arm B relies primarily on the admissions provision in s 464J.",
+      "material_regressions": [
+        "Arm B does not identify the principal statutory legal-advice protection for a suspect in custody."
+      ]
+    },
+    {
+      "question_id": "au-012",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both identify resealing, but arm B is more precise on will validity, asset-by-asset situs, tax and broker requirements, while arm A spends space on remote procedural alternatives.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-013",
+      "preferred": "arm-a",
+      "confidence": "close",
+      "reason": "Both are strong; arm A adds the governing ACAT own-costs rule and its exceptions, which materially improves the requested costs comparison.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-014",
+      "preferred": "tie",
+      "confidence": "close",
+      "reason": "Both give useful causation, loss, mitigation and tax-review workflows but neither grounds the review path or NSW negligence analysis in the principal statutory provisions.",
+      "material_regressions": []
+    },
+    {
+      "question_id": "au-015",
+      "preferred": "arm-b",
+      "confidence": "close",
+      "reason": "Both cover the substantive and interim issues; arm B is more focused and practical, although both leave the statutory interstate judgment-registration mechanics unspecified.",
+      "material_regressions": []
+    }
+  ],
+  "summary": {
+    "mean_scores": {
+      "arm-a": {
+        "legal_correctness": 3.67,
+        "issue_coverage": 4.20,
+        "grounding_and_citations": 3.13,
+        "jurisdiction_discipline": 4.60,
+        "usefulness_and_safety": 4.27,
+        "overall": 3.97
+      },
+      "arm-b": {
+        "legal_correctness": 3.93,
+        "issue_coverage": 4.33,
+        "grounding_and_citations": 3.47,
+        "jurisdiction_discipline": 4.73,
+        "usefulness_and_safety": 4.80,
+        "overall": 4.25
+      }
+    },
+    "preference_counts": {
+      "arm-a": 5,
+      "arm-b": 6,
+      "tie": 4
+    },
+    "critical_failure_counts": {
+      "arm-a": 2,
+      "arm-b": 0
+    },
+    "recurring_strengths": {
+      "arm-a": [
+        "Frequently detailed issue spotting and evidence-preservation guidance.",
+        "Strong treatment of selected statutory details, including the NSW building deposit cap, Victorian intestacy threshold and Victorian custodial legal-advice right.",
+        "Generally strong jurisdiction separation and practical next steps."
+      ],
+      "arm-b": [
+        "Consistently clear, proportionate organization with strong practical action plans.",
+        "Good use of transparent assumptions and conditional analysis when facts were missing.",
+        "Strong jurisdiction discipline and comparatively reliable treatment of central statutory schemes."
+      ]
+    },
+    "recurring_weaknesses": {
+      "arm-a": [
+        "Often overlong, with citation-heavy detours that obscure the principal answer.",
+        "Two material reliability failures: a non-answer on family law and an incorrect defamation serious-harm proposition.",
+        "Several answers omit the principal statutory provisions while citing peripheral cases or provisions."
+      ],
+      "arm-b": [
+        "Occasionally omits a dispositive statutory qualifier or salient issue, including the Victorian statutory-legacy threshold and NSW building deposit cap.",
+        "Grounding is sometimes thin for core rules, including statutory directors' duties, NSW professional negligence and interstate judgment enforcement.",
+        "Some requested defence or procedural detail is compressed too aggressively."
+      ]
+    },
+    "overall_findings": [
+      "Arm B has the higher overall mean (4.25 versus 3.97) and higher means on all five dimensions.",
+      "Pairwise results are arm B preferred on 6 questions, arm A on 5, with 4 ties.",
+      "The largest arm B advantage is avoiding arm A's family-law non-answer and defamation serious-harm error; arm A's clearest advantages are specific statutory details missed by arm B in the building, intestacy and police-interview answers.",
+      "Neither arm is consistently strong on citation grounding where the saved answer omits the principal statute or relies on peripheral authorities."
+    ],
+    "limitations": [
+      "No expectation file or gold answers were available.",
+      "No retrieval or gateway logs were available, so retrieved support and citation provenance could not be assessed.",
+      "No external source checking was performed; citations were not presumed accurate merely because they appeared plausible.",
+      "One gpt-5.6-sol LLM judge evaluated this jurisdiction and saw the arm identifiers and model names; model identity was not blinded, although answer-inspection order was alternated, and there was no second judge or inter-rater agreement check.",
+      "Each arm has one saved run only, with no repeated runs for variability assessment.",
+      "The 15-question suite does not support statistical inference or causal attribution beyond the recorded configuration difference."
+    ]
+  }
+}
